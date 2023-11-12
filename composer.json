@@ -21,7 +21,7 @@
     "scripts": {
         "test": "vendor/bin/phpunit tests --colors=always --display-notices --display-warnings",
         "coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit tests --colors=always --display-notices --display-warnings --coverage-html tests/coverage --coverage-filter src",
-        "view-coverage": "open coverage/index.html",
+        "view-coverage": "open tests/coverage/index.html",
         "beautify": "vendor/bin/phpcbf"
     }
 }
