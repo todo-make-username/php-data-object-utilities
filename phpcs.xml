@@ -2,6 +2,7 @@
     <description>My Coding Style</description>
 
     <file>./src</file>
+    <file>./demo</file>
 
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
     <rule ref="Squiz.Scope.MethodScope"/>
