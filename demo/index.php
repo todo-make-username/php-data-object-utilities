@@ -90,6 +90,10 @@
 			padding-left: 25px;
 		}
 
+		#output_container pre {
+			white-space: pre-wrap;
+		}
+
 		.text-right {
 			text-align: right;
 		}
