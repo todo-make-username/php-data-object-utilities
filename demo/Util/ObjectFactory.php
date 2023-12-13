@@ -13,6 +13,7 @@ class ObjectFactory
 	public static function create(string $section): ?object
 	{
 		$section    = ucwords($section, ' _');
+		$section    = str_replace('_', '', $section);
 		$class_name = 'TodoMakeUsername\\ObjectHelpersDemo\\Objects\\'.$section.'Obj';
 		if (class_exists($class_name))
 		{

@@ -14,7 +14,8 @@
 	 * If any post data is present, it will go to submit.php, otherwise this file will run.
 	 */
 
-	if (!empty($_POST)) {
+	if (!empty($_POST))
+	{
 		include_once("submit.php");
 		exit;
 	}
@@ -112,6 +113,14 @@
 
 		.pure-form-aligned .pure-control-group label {
 			width: 14em;
+		}
+
+		pre.example {
+			padding: 5px;
+			border-style: solid;
+			border-color: #e5e5e5;
+			border-width: 1px;
+			border-radius: 4px;;
 		}
 	</style>
 	<script>
