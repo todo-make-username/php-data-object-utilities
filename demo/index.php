@@ -1,4 +1,11 @@
-<?php
+<?php declare(strict_types=1);
+
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	include_once(__DIR__.'/../vendor/autoload.php');
+
 	/**
 	 * These demo files are quick and dirty to showcase the library, not to demo best practices.
 	 * Please never do this.

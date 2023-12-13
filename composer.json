@@ -1,11 +1,12 @@
 {
-    "name": "matt/data-loader",
+    "name": "todo-make-username/object-helpers",
     "description": "A PHP helper for validating and injecting associative arrays into typed data classes.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Matt\\DataLoader\\": "src/"
+            "TodoMakeUsername\\ObjectHelpers\\": "src/",
+            "TodoMakeUsername\\ObjectHelpersDemo\\": "demo/"
         }
     },
     "authors": [

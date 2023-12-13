@@ -11,19 +11,19 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# DataLoader
-A PHP helper for validating and injecting associative arrays into typed data classes using attributes.
+# PHP Object Helpers
+PHP helpers for hydrating and validating objects using reflection and attributes.
 
 Project name is still pending if I can think of something better
 
-[Report Bug](https://github.com/todo-make-username/DataLoader/issues)
+[Report Bug](https://github.com/todo-make-username/php-object-helpers/issues)
 ·
-[Request Feature](https://github.com/todo-make-username/DataLoader/issues)
+[Request Feature](https://github.com/todo-make-username/php-object-helpers/issues)
 
 </div>
 
 ## Requirements
-* PHP >= 8.2 
+* PHP >= 8.2
 
 ## How to run the demo
 Run this command in the project root:\
@@ -34,15 +34,15 @@ http://localhost:8000/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/todo-make-username/DataLoader.svg
-[contributors-url]: https://github.com/todo-make-username/DataLoader/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/todo-make-username/DataLoader.svg
-[forks-url]: https://github.com/todo-make-username/DataLoader/network/members
-[stars-shield]: https://img.shields.io/github/stars/todo-make-username/DataLoader.svg
-[stars-url]: https://github.com/todo-make-username/DataLoader/stargazers
-[issues-shield]: https://img.shields.io/github/issues/todo-make-username/DataLoader.svg
-[issues-url]: https://github.com/todo-make-username/DataLoader/issues
-[license-shield]: https://img.shields.io/github/license/todo-make-username/DataLoader.svg
-[license-url]: https://github.com/todo-make-username/DataLoader/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/todo-make-username/php-object-helpers.svg
+[contributors-url]: https://github.com/todo-make-username/php-object-helpers/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/todo-make-username/php-object-helpers.svg
+[forks-url]: https://github.com/todo-make-username/php-object-helpers/network/members
+[stars-shield]: https://img.shields.io/github/stars/todo-make-username/php-object-helpers.svg
+[stars-url]: https://github.com/todo-make-username/php-object-helpers/stargazers
+[issues-shield]: https://img.shields.io/github/issues/todo-make-username/php-object-helpers.svg
+[issues-url]: https://github.com/todo-make-username/php-object-helpers/issues
+[license-shield]: https://img.shields.io/github/license/todo-make-username/php-object-helpers.svg
+[license-url]: https://github.com/todo-make-username/php-object-helpers/blob/main/LICENSE
 [php-shield]: https://img.shields.io/badge/php->%3D8.2-blue
 [php-url]: https://www.php.net/
