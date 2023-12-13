@@ -10,14 +10,18 @@ $serialized_obj = [];
 
 unset($_POST['section']);
 
-if (!is_null($Obj)) {
-	try {
-		$Hydrated_Obj = (new ObjectHydrator())->hydrate($Obj)->with($_POST)->getObject();
+if (!is_null($Obj))
+{
+	try
+	{
+		$Hydrated_Obj   = (new ObjectHydrator())->hydrate($Obj)->with($_POST)->getObject();
 		$serialized_obj = $Hydrated_Obj->toArray();
-	} catch(Exception $e) {
+	}
+	catch(Exception $e)
+	{
 		$message = $e->getMessage();
 	}
-} 
+}
 
 $response = [
 	'message'    => $message,

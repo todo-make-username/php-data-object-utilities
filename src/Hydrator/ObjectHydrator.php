@@ -65,7 +65,8 @@ class ObjectHydrator
 		$ReflectionClass       = new ReflectionClass($Object::class);
 		$ReflectiionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
 
-		foreach ($ReflectiionProperties as $Property) {
+		foreach ($ReflectiionProperties as $Property)
+		{
 			if (!$this->hydrateObjectProperty($Object, $Property))
 			{
 				return null;
@@ -99,12 +100,14 @@ class ObjectHydrator
 		];
 
 		$ReflectionAttributes = $Property->getAttributes(HydratorAttributeInterface::class, ReflectionAttribute::IS_INSTANCEOF);
-		foreach ($ReflectionAttributes as $ReflectionAttributes) {
+		foreach ($ReflectionAttributes as $ReflectionAttributes)
+		{
 			$Attribute = $ReflectionAttributes->newInstance();
 			$value     = $Attribute->process($value, $meta_data);
 		}
 
-		if (!$is_set) {
+		if (!$is_set)
+		{
 			return true;
 		}
 

@@ -21,15 +21,17 @@ class Required implements HydratorAttributeInterface
 	 */
 	public function process(mixed $value, array $meta_data): mixed
 	{
-		$Property = $meta_data['Property'];
+		$Property      = $meta_data['Property'];
 		$property_name = $Property->name;
 
-		if (!($meta_data['is_set'] ?? true)) {
-			throw new ObjectHydrationException("a value is required for '{$property_name}'.");
+		if (!($meta_data['is_set'] ?? true))
+		{
+			throw new ObjectHydrationException("A value is required for '{$property_name}'.");
 		}
 
-		if ($this->not_empty && empty($value)) {
-			throw new ObjectHydrationException("a value is required and must not be empty for '{$property_name}'.");
+		if ($this->not_empty && empty($value))
+		{
+			throw new ObjectHydrationException("A value is required and must not be empty for '{$property_name}'.");
 		}
 
 		return $value;
