@@ -20,20 +20,23 @@
 	}
 
 	$section_name_map   = [];
-	$dir_contents       = scandir(__DIR__.'/components/sections') ?: [];
+	$dir_contents       = scandir(__DIR__.'/html/sections') ?: [];
 	$section_file_names = array_diff($dir_contents, [ '..', '.' ]);
 
 	foreach ($section_file_names as $file_name) {
 		if (!str_contains($file_name, '.section.html')) {
 			continue;
 		}
+
 		$stripped_file_name = str_replace('.section.html', '', $file_name);
+		$stripped_file_name = str_replace('.form', '', $stripped_file_name);
 		$stripped_file_name = trim($stripped_file_name, '_');
 
 		$section_name_map[$file_name] = [
-			'id'    => $stripped_file_name,
-			'file'  => $file_name,
-			'title' => str_replace(' And ', ' & ', ucwords(str_replace('_', ' ', $stripped_file_name))),
+			'id'      => $stripped_file_name,
+			'file'    => $file_name,
+			'title'   => str_replace(' And ', ' & ', ucwords(str_replace('_', ' ', $stripped_file_name))),
+			'is_form' => str_contains($file_name, 'form.section.html'),
 		];
 	}
 ?>
@@ -115,7 +118,7 @@
 				formData.append("type_file_multiple[]", file_multi_ele.files[0]);
 			}
 			
-			return FormData;
+			return formData;
 		}
 
 		function showSection(sectionName) {
@@ -123,9 +126,9 @@
 			$('#' + sectionName).show();
 		}
 
-		function resetForm() {
-			$('#form :disabled').prop('disabled', false);
-			$('#form')[0].reset();
+		function resetForm($form) {
+			$form.find(':disabled').prop('disabled', false);
+			$form[0].reset();
 			return false;
 		}
 
@@ -154,11 +157,16 @@
 			populateSetDropdown();
 			setupMenu();
 
-			$('#form-reset').on('click', function() {
-				return resetForm();
+			$('button.form-reset').on('click', function() {
+				$form = $(this).closest('form');
+				return resetForm($form);
 			});
 
-			$('#form').on('submit', function(e) {
+			$('.toggle-input').on('click', function() {
+				$(this).siblings('input').prop('disabled', !$(this).prop('checked'));
+			});
+
+			$('.form').on('submit', function(e) {
 				e.preventDefault();
 				formData = new FormData(this);
 
@@ -171,10 +179,10 @@
 					response => response.json()
 				).then(response => {
 					$('#output_container #message').text(response['message']);
-					$('#output_container #hydrated').text(response['data']['hydrated']);
-					$('#output_container #dataObj').text(JSON.stringify(response['data']['dataObj'], null, 4));
-					$('#output_container #post').text(JSON.stringify(response['data']['post'], null, 4));
-					$('#output_container #files').text(JSON.stringify(response['data']['files'], null, 4));
+					$('#output_container #hydrated').text(response['hydrated']);
+					$('#output_container #serialized').text(JSON.stringify(response['serialized'], null, 4));
+					$('#output_container #post').text(JSON.stringify(response['post'], null, 4));
+					$('#output_container #files').text(JSON.stringify(response['files'], null, 4));
 				});
 
 				return false;
@@ -188,22 +196,9 @@
 		</div>
 	</div>
 
-	<div class="pure-g text-center">
-		<div class="pure-u-1">
-			<div class="pure-g">
-				<div class="pure-u-1-2 text-right">
-					<button id="form-reset" class="pure-button">Reset Form</button>
-				</div>
-				<div class="pure-u-1-2 text-left">
-					<button type="submit" class="pure-button">Submit</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div class="pure-g">
 		<div class="pure-u-1-5">
-		<h2 class="text-center">Demo Sections</h2>
+			<h2 class="text-center">Demo Sections</h2>
 		</div>
 		<div class="pure-u-2-5">
 			<h2 class="text-center">Form</h2>
@@ -226,13 +221,26 @@
 			</div>
 		</div>
 		<div class="pure-u-2-5">
-			<form id="form" class="pure-form pure-form-aligned align-top" action="" method="post" enctype="multipart/form-data">
-				<?php
-				foreach ($section_name_map as $section) {
-					include('components/sections/'.$section['file']);
-				}
-				?>
-			</form>
+			<?php foreach ($section_name_map as $section) { ?>
+				<section id="section-<?= $section['id'] ?>">
+					<?php if ($section['is_form']) { ?>
+						<form class="form pure-form pure-form-aligned align-top" action="" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="section" value="<?= $section['id'] ?>">
+							<?php include('html/sections/'.$section['file']); ?>
+							<div class="pure-g">
+								<div class="pure-u-1-2 text-right">
+									<button class="pure-button form-reset">Reset Form</button>
+								</div>
+								<div class="pure-u-1-2 text-left">
+									<button type="submit" class="pure-button">Submit</button>
+								</div>
+							</div>
+						</form>
+					<?php } else { ?>
+						<?php include('html/sections/'.$section['file']); ?>
+					<?php } ?>
+				</section>
+			<?php } ?>
 		</div>
 		<div class="pure-u-2-5">
 			<div id="output_container">
@@ -246,7 +254,7 @@
 				</div>
 				<div class="pure-g">
 					<div class="pure-u-1-4 align-top">Serialize:</div>
-					<pre id="dataObj" class="pure-u-3-4"></pre>
+					<pre id="serialized" class="pure-u-3-4"></pre>
 				</div>
 				<div class="pure-g">
 					<div class="pure-u-1-4 align-top">$_POST:</div>
