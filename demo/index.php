@@ -122,6 +122,7 @@
 		}
 
 		function showSection(sectionName) {
+			localStorage.selectedSection = sectionName;
 			$('section').hide();
 			$('#' + sectionName).show();
 		}
@@ -150,7 +151,11 @@
 				showSection(this.dataset.target)
 			});
 
-			$('#menu .pure-menu-link.section-link:first').click();
+			if (localStorage.selectedSection) {
+				showSection(localStorage.selectedSection);
+			} else {
+				$('#menu .pure-menu-link.section-link:first').click();
+			}
 		}
 
 		$(function() {
