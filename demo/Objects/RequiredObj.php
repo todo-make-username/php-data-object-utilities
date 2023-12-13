@@ -12,6 +12,9 @@ class RequiredObj implements ObjInterface
 	#[Required(not_empty: true)]
 	public string $required_not_empty;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function toArray(): array
 	{
 		return [

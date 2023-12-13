@@ -1,18 +1,33 @@
 <div class="pure-g">
 	<div class="pure-u-1">
-		<legend>Required:<br>(click boxes to disable inputs)</legend>
+		<h3>Description:</h3>
+		<p>This is an example of the required attribute that is used during hydration.</p>
+		<p>When required is set, the hydration array data must have a key that matches that property.</p>
+		<p>If the optional <code>not_empty</code> parameter is set to true, the array data must have the key, and the value must pass an <code>empty()</code> check.</p> 
+	</div>
+</div>
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Examples:</h3>
+		<legend>Click the toggles to disable inputs</legend>
 	</div>
 </div>
 <div class="pure-g">
 	<div class="pure-u-1 align-top">
 		<div class="pure-control-group">
-			<label>Required:</label>
+			<label>
+				Required:<br>
+				<small>#[Required()]</small>
+			</label>
 			<input type="checkbox" class="form-check-input toggle-input" checked>
 			<input type="text" class="form-control" name="required" value="123">
 		</div>
 
 		<div class="pure-control-group">
-			<label>Required Not Empty:</label>
+			<label>
+				Required Not Empty:<br>
+				<small>#[Required(not_empty: true)]</small>
+			</label>
 			<input type="checkbox" class="form-check-input toggle-input" checked>
 			<input type="text" class="form-control" name="required_not_empty" value="1b3">
 		</div>

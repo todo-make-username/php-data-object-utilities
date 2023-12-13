@@ -47,7 +47,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>DataLoader Demo</title>
+	<title>Object Helpers Demo</title>
 
 	<!-- JQuery -->
 	<script 
@@ -104,6 +104,10 @@
 
 		.align-top {
 			vertical-align: top;
+		}
+
+		.pure-form-aligned .pure-control-group label {
+			width: 14em;
 		}
 	</style>
 	<script>
@@ -197,7 +201,10 @@
 
 	<div class="pure-g text-center">
 		<div class="pure-u-1">
-			<h1>Demo Page</h1>
+			<h1>
+				Object Helpers Demo<br>
+				<small>Attributes</small>
+			</h1>
 		</div>
 	</div>
 
@@ -205,9 +212,7 @@
 		<div class="pure-u-1-5">
 			<h2 class="text-center">Demo Sections</h2>
 		</div>
-		<div class="pure-u-2-5">
-			<h2 class="text-center">Form</h2>
-		</div>
+		<div class="pure-u-2-5"></div>
 		<div class="pure-u-2-5">
 			<h2 class="text-center">Response</h2>
 		</div>
