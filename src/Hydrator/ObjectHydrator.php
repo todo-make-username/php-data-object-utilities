@@ -14,7 +14,7 @@ class ObjectHydrator implements ObjectHelperInterface
 {
 	protected ?object $Object;
 	protected ?object $HydratedObject = null;
-	protected array $hydrate_data;
+	protected array   $hydrate_data;
 
 	/**
 	 * The constructor.
