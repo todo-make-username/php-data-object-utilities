@@ -151,7 +151,18 @@
 		function resetForm($form) {
 			$form.find(':disabled').prop('disabled', false);
 			$form[0].reset();
+			resetResponseSection();
 			return false;
+		}
+
+		function resetResponseSection() {
+			populateResponseSection({
+				'message': '',
+				'hydrated': '',
+				'serialized': {},
+				'post': {},
+				'files': [],
+			});
 		}
 
 		function populateSetDropdown() {
@@ -179,6 +190,14 @@
 			}
 		}
 
+		function populateResponseSection(response_data) {
+			$('#output_container #message').text(response_data['message']);
+			$('#output_container #hydrated').text(response_data['hydrated']);
+			$('#output_container #serialized').text(JSON.stringify(response_data['serialized'], null, 4));
+			$('#output_container #post').text(JSON.stringify(response_data['post'], null, 4));
+			$('#output_container #files').text(JSON.stringify(response_data['files'], null, 4));
+		}
+
 		$(function() {
 			populateSetDropdown();
 			setupMenu();
@@ -204,11 +223,7 @@
 				}).then(
 					response => response.json()
 				).then(response => {
-					$('#output_container #message').text(response['message']);
-					$('#output_container #hydrated').text(response['hydrated']);
-					$('#output_container #serialized').text(JSON.stringify(response['serialized'], null, 4));
-					$('#output_container #post').text(JSON.stringify(response['post'], null, 4));
-					$('#output_container #files').text(JSON.stringify(response['files'], null, 4));
+					populateResponseSection(response);
 				});
 
 				return false;
@@ -281,15 +296,15 @@
 				</div>
 				<div class="pure-g">
 					<div class="pure-u-1-4 align-top">Serialize:</div>
-					<pre id="serialized" class="pure-u-3-4"></pre>
+					<pre id="serialized" class="pure-u-3-4">{}</pre>
 				</div>
 				<div class="pure-g">
 					<div class="pure-u-1-4 align-top">$_POST:</div>
-					<pre id="post" class="pure-u-3-4"></pre>
+					<pre id="post" class="pure-u-3-4">{}</pre>
 				</div>
 				<div class="pure-g">
 					<div class="pure-u-1-4 align-top">$_FILES:</div>
-					<pre id="files" class="pure-u-3-4"></pre>
+					<pre id="files" class="pure-u-3-4">[]</pre>
 				</div>
 			</div>
 		</div>

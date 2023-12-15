@@ -10,10 +10,10 @@ interface ObjectHelperInterface
 	 * @param object $Object The object that the helper will use.
 	 * @return ObjectHelperInterface
 	 */
-	public function setObject(?object $Object): ObjectHelperInterface;
+	public function setObject(object $Object): ObjectHelperInterface;
 
 	/**
-	 * Get the modified object or null if it failed.
+	 * Get the modified object or null if something failed.
 	 *
 	 * @return ?object
 	 */

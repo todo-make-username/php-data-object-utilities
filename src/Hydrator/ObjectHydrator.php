@@ -23,13 +23,18 @@ class ObjectHydrator implements ObjectHelperInterface
 	 */
 	public function __construct(?object $Object=null)
 	{
+		if (is_null($Object))
+		{
+			return;
+		}
+
 		$this->setObject($Object);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function setObject(?object $Object): ObjectHelperInterface
+	public function setObject(object $Object): ObjectHelperInterface
 	{
 		$this->Object         = $Object;
 		$this->HydratedObject = null;

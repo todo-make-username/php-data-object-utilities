@@ -19,6 +19,8 @@ class BasicDataTypesObj implements ObjInterface
 
 	public bool $val_bool = false;
 
+	public bool $val_bool_dropdown;
+
 	public array $val_array;
 
 	/**
@@ -27,13 +29,14 @@ class BasicDataTypesObj implements ObjInterface
 	public function toArray(): array
 	{
 		return [
-			'duck' => $this->val_duck,
-			'int'  => $this->val_int,
-			'int loose' => $this->val_int_loose,
-			'float'     => $this->val_float,
-			'string'    => $this->val_string,
-			'bool'      => $this->val_bool,
-			'array'     => $this->val_array,
+			'duck'          => $this->val_duck,
+			'int'           => $this->val_int,
+			'int loose'     => $this->val_int_loose,
+			'float'         => $this->val_float,
+			'string'        => $this->val_string,
+			'bool'          => $this->val_bool,
+			'bool dropdown' => $this->val_bool_dropdown,
+			'array'         => $this->val_array,
 		];
 	}
 }
