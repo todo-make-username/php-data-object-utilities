@@ -2,14 +2,20 @@
 
 namespace TodoMakeUsername\ObjectHelpers\Hydrator\Attributes;
 
+/**
+ * The interface for all hydration attributes.
+ *
+ * Hydration attributes are hydrated themselves with certain pieces of metadata:
+ *
+ * ReflectionProperty:$Property, bool:$is_set
+ */
 interface HydratorAttributeInterface
 {
 	/**
 	 * Process the value before hydration.
 	 *
-	 * @param mixed $value     The value to process.
-	 * @param array $meta_data Any metadata that might be needed.
+	 * @param mixed $value The value to process.
 	 * @return mixed Returns the processed value.
 	 */
-	public function process(mixed $value, array $meta_data): mixed;
+	public function process(mixed $value): mixed;
 }

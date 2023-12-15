@@ -34,7 +34,7 @@ class ObjectHydrator implements ObjectHelperInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function setObject(object $Object): ObjectHelperInterface
+	public function setObject(object $Object): ObjectHydrator
 	{
 		$this->Object         = $Object;
 		$this->HydratedObject = null;
@@ -98,7 +98,7 @@ class ObjectHydrator implements ObjectHelperInterface
 		$value         = $this->hydrate_data[$property_name] ?? null;
 		$is_set        = array_key_exists($property_name, $this->hydrate_data);
 
-		// TODO: Make metaData object for hydration instead of array.
+		// This metadata is used to hydrate Hydration attributes.
 		$metadata = [
 			'Property' => $Property,
 			'is_set'   => $is_set,
@@ -130,11 +130,13 @@ class ObjectHydrator implements ObjectHelperInterface
 	protected function processHydrationAttributes(ReflectionProperty $Property, mixed $value, array $metadata=[]): mixed
 	{
 		$ReflectionAttributes = $Property->getAttributes(HydratorAttributeInterface::class, ReflectionAttribute::IS_INSTANCEOF);
+		$Hydrator             = new ObjectHydrator();
 
 		foreach ($ReflectionAttributes as $ReflectionAttributes)
 		{
 			$Attribute = $ReflectionAttributes->newInstance();
-			$value     = $Attribute->process($value, $metadata);
+			$Attribute = $Hydrator->setObject($Attribute)->hydrate($metadata)->getObject();
+			$value     = $Attribute->process($value);
 		}
 
 		return $value;
