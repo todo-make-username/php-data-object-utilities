@@ -10,7 +10,7 @@ class RequiredObj implements ObjInterface
 	public string $required;
 
 	#[Required]
-	//#[NotEmpty]
+	//#[NotEmpty] @phpstan-ignore-line
 	public string $required_not_empty;
 
 	/**

@@ -4,17 +4,17 @@ namespace TodoMakeUsername\ObjectHelpers\Converter;
 
 class TypeConverter
 {
-	public static array $type_map = [
-		'string'  => 'String',
-		'bool'    => 'Bool',
-		'boolean' => 'Bool',
-		'int'     => 'Int',
-		'integer' => 'Int',
-		'float'   => 'Float',
-		'double'  => 'Float',
-		'array'   => 'Array',
-		'null'    => 'Mixed',
-		'mixed'   => 'Mixed',
+	public static array $type_method_map = [
+		'string'  => 'convertToString',
+		'bool'    => 'convertToBool',
+		'boolean' => 'convertToBool',
+		'int'     => 'convertToInt',
+		'integer' => 'convertToInt',
+		'float'   => 'convertToFloat',
+		'double'  => 'convertToFloat',
+		'array'   => 'convertToArray',
+		'null'    => 'convertToMixed',
+		'mixed'   => 'convertToMixed',
 		// No Object Conversion
 	];
 
@@ -30,10 +30,9 @@ class TypeConverter
 	 */
 	public static function convertTo(mixed $value, string $type, array $metadata=[]): mixed
 	{
-		$type        = self::$type_map[$type] ?? null;
-		$method_name = 'convertTo'.$type;
+		$method_name = self::$type_method_map[$type] ?? null;
 
-		if (!method_exists(TypeConverter::class, $method_name))
+		if (is_null($method_name))
 		{
 			return $value;
 		}

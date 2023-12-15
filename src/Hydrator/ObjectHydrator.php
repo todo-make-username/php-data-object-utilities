@@ -7,53 +7,55 @@ use ReflectionClass;
 use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Converter\Attributes\Conversion;
 use TodoMakeUsername\ObjectHelpers\Converter\TypeConverter;
+use TodoMakeUsername\ObjectHelpers\Helper\ObjectHelperInterface;
 use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\HydratorAttributeInterface;
 
-class ObjectHydrator
+class ObjectHydrator implements ObjectHelperInterface
 {
-	/**
-	 * @var array{ReflectionProperty}
-	 */
-	protected array $ReflectiionProperties;
-	protected ReflectionClass $ReflectionClass;
-	protected object $Object;
+	protected ?object $Object;
 	protected ?object $HydratedObject = null;
 	protected array $hydrate_data;
 
 	/**
-	 * Set the object to be hydrated.
+	 * The constructor.
 	 *
-	 * @param object $Object The object to be hydrated.
-	 * @return ObjectHydrator
+	 * @param object $Object The object to be hydrated [Optional].
 	 */
-	public function hydrate(object $Object): ObjectHydrator
+	public function __construct(?object $Object=null)
 	{
-		$this->Object = $Object;
+		$this->setObject($Object);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function setObject(?object $Object): ObjectHelperInterface
+	{
+		$this->Object         = $Object;
+		$this->HydratedObject = null;
+
 		return $this;
 	}
 
 	/**
-	 * Set the data that will be used to hydrate the object.
+	 * {@inheritDoc}
+	 */
+	public function getObject(): ?object
+	{
+		return $this->HydratedObject;
+	}
+
+	/**
+	 * Hydrate the object.
 	 *
 	 * @param array $hydrate_data The data to hydrate the object with.
 	 * @return ObjectHydrator
 	 */
-	public function with(array $hydrate_data): ObjectHydrator
+	public function hydrate(array $hydrate_data): ObjectHydrator
 	{
-		$this->hydrate_data = $hydrate_data;
-		return $this;
-	}
-
-	/**
-	 * Get the hydrated object or null if failed.
-	 *
-	 * @return object|null
-	 */
-	public function getObject(): ?object
-	{
+		$this->hydrate_data   = $hydrate_data;
 		$this->HydratedObject = $this->hydrateObject(clone $this->Object);
-
-		return $this->HydratedObject;
+		return $this;
 	}
 
 	/**
@@ -106,13 +108,6 @@ class ObjectHydrator
 
 		$property_type = $Property->getType()?->getName() ?? 'null';
 		$value         = $this->convertValueToType($value, $property_type, $metadata);
-
-		// TODO: Run Filters Here
-
-		// TODO: Run Validator Here
-
-		// To use later.
-		// $is_nullable   = $Property->getType()?->allowsNull() ?? true;
 
 		$Object->{$property_name} = $value;
 
