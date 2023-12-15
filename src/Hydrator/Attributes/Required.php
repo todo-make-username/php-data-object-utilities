@@ -9,17 +9,9 @@ use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
 class Required implements HydratorAttributeInterface
 {
 	/**
-	 * The Constructor
-	 *
-	 * @param boolean $not_empty The value must also not be empty.
-	 */
-	public function __construct(protected bool $not_empty=false)
-	{}
-
-	/**
 	 * {@inheritDoc}
 	 */
-	public function process(mixed $value, array $meta_data): mixed
+	public function process(mixed $value, array $meta_data=[]): mixed
 	{
 		$Property      = $meta_data['Property'];
 		$property_name = $Property->name;
@@ -27,11 +19,6 @@ class Required implements HydratorAttributeInterface
 		if (!($meta_data['is_set'] ?? true))
 		{
 			throw new ObjectHydrationException("A value is required for '{$property_name}'.");
-		}
-
-		if ($this->not_empty && empty($value))
-		{
-			throw new ObjectHydrationException("A value is required and must not be empty for '{$property_name}'.");
 		}
 
 		return $value;

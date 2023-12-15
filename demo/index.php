@@ -12,6 +12,8 @@
 	 *
 	 * This is the main entrypoint into the demo.
 	 * If any post data is present, it will go to submit.php, otherwise this file will run.
+	 *
+	 * This section is not unit tested.
 	 */
 
 	if (!empty($_POST))
@@ -24,8 +26,10 @@
 	$dir_contents       = scandir(__DIR__.'/html/sections') ?: [];
 	$section_file_names = array_diff($dir_contents, [ '..', '.' ]);
 
-	foreach ($section_file_names as $file_name) {
-		if (!str_contains($file_name, '.section.html')) {
+	foreach ($section_file_names as $file_name)
+	{
+		if (!str_contains($file_name, '.section.html'))
+		{
 			continue;
 		}
 

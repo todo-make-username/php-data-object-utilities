@@ -6,10 +6,11 @@ use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\Required;
 
 class RequiredObj implements ObjInterface
 {
-	#[Required()]
+	#[Required]
 	public string $required;
 
-	#[Required(not_empty: true)]
+	#[Required]
+	//#[NotEmpty]
 	public string $required_not_empty;
 
 	/**
