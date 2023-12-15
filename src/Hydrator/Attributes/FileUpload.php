@@ -28,8 +28,9 @@ class FileUpload implements HydratorAttributeInterface
 
 		$value = FilesHelper::getRawFileData($property_name);
 
-		if ($this->formatted_uploads) {
-			$value = FilesHelper::squashMultiFileData($value);
+		if ($this->formatted_uploads)
+		{
+			$value = FilesHelper::formatMultiFileData($value);
 		}
 
 		return $value;

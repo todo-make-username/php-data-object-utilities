@@ -28,7 +28,7 @@ class FilesHelper
 			return true;
 		}
 
-		// Squashed multi-file upload
+		// Formatted multi-file upload
 		if (isset($file_data[0]))
 		{
 			return ($file_data[0]['error'] === UPLOAD_ERR_NO_FILE);
@@ -47,12 +47,12 @@ class FilesHelper
 	/**
 	 * Converts the multi-uploads in $_FILES array to a readable format.
 	 *
-	 * @param array $files The field array in the file array to squash.
+	 * @param array $files The field array in the file array to format.
 	 * @return array
 	 */
-	public static function squashMultiFileData(array $files): array
+	public static function formatMultiFileData(array $files): array
 	{
-		// Return if squashed already
+		// Return if formatted already
 		if (is_array($files) && (empty($files) || isset($files[0])))
 		{
 			return $files;
@@ -66,7 +66,7 @@ class FilesHelper
 
 		$file_count       = count($files['error']);
 		$file_keys        = array_keys($files);
-		$squashed_files   = [];
+		$formatted_array  = [];
 		$new_file_counter = 0;
 
 		for ($i = 0; $i < $file_count; $i++)
@@ -76,16 +76,16 @@ class FilesHelper
 				continue;
 			}
 
-			$squashed_files[$new_file_counter] = [];
+			$formatted_array[$new_file_counter] = [];
 
 			foreach ($file_keys as $key)
 			{
-				$squashed_files[$new_file_counter][$key] = $files[$key][$i];
+				$formatted_array[$new_file_counter][$key] = $files[$key][$i];
 			}
 
 			$new_file_counter++;
 		}
 
-		return $squashed_files;
+		return $formatted_array;
 	}
 }
