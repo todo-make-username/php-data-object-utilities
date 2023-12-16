@@ -91,7 +91,7 @@ class ObjectHydrator implements ObjectHelperInterface
 	 *
 	 * @param object             $Object   The object with the property to hydrate.
 	 * @param ReflectionProperty $Property The property Relection object.
-	 * @return boolean
+	 * @return boolean Return false on error.
 	 */
 	protected function hydrateObjectProperty(object $Object, ReflectionProperty $Property): bool
 	{

@@ -6,6 +6,11 @@ use Attribute;
 use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Util\FilesHelper;
 
+/**
+ * This takes the file array from the $_FILES array that matches the property name.
+ *
+ * Can only be used on duck, mixed, or array types.
+ */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class FileUpload implements HydratorAttributeInterface
 {

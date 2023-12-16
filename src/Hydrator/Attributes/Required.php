@@ -6,6 +6,9 @@ use Attribute;
 use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
 
+/**
+ * The hydration data array must have this property name set as a key.
+ */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class Required implements HydratorAttributeInterface
 {
