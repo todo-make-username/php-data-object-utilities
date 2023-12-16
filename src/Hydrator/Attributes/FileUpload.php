@@ -28,7 +28,7 @@ class FileUpload implements HydratorAttributeInterface
 	 *
 	 * @param boolean $formatted_uploads This will format the multi-upload array into a cleaner array to work with. No effect on single files.
 	 */
-	public function __construct(public bool $formatted_uploads=false)
+	public function __construct(protected bool $formatted_uploads=false)
 	{}
 
 	/**

@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
+use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
 use TodoMakeUsername\ObjectHelpersDemo\Util\ObjectFactory;
 
 $Obj            = ObjectFactory::create($_POST['section']);
-$Hydrated_Obj   = null;
-$message        = '';
+$NewObj         = null;
+$message        = 'Success!';
 $serialized_obj = [];
 
 unset($_POST['section']);
@@ -14,8 +15,9 @@ if (!is_null($Obj))
 {
 	try
 	{
-		$Hydrated_Obj   = (new ObjectHydrator($Obj))->hydrate($_POST)->getObject();
-		$serialized_obj = $Hydrated_Obj->toArray();
+		$NewObj         = (new ObjectHydrator($Obj))->hydrate($_POST)->getObject();
+		$NewObj         = (new ObjectTailor($NewObj))->tailor()->getObject();
+		$serialized_obj = $NewObj->toArray();
 	}
 	catch(Exception $e)
 	{
@@ -25,7 +27,7 @@ if (!is_null($Obj))
 
 $response = [
 	'message'    => $message,
-	'hydrated'   => !is_null($Hydrated_Obj),
+	'hydrated'   => !is_null($NewObj),
 	'post'       => $_POST,
 	'files'      => $_FILES,
 	'serialized' => $serialized_obj,

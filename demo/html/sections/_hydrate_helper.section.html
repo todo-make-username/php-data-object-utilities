@@ -1,0 +1,24 @@
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Description:</h3>
+		<p>Here are some examples of how the <code>ObjectHydrator</code> is used to hydrate an object's public properties using $_POST.</p>
+	</div>
+</div>
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Examples:</h3>
+	</div>
+</div>
+<div class="pure-g">
+	<div class="pure-u-1">
+		<pre class="example">$HydratedObj = (new ObjectHydrator($Obj))
+			->hydrate($_POST)
+			->getObject();
+		</pre>
+		<pre class="example">$HydratedObj = (new ObjectHydrator())
+			->setObject($Obj)
+			->hydrate($_POST)
+			->getObject();
+		</pre>
+	</div>
+</div>

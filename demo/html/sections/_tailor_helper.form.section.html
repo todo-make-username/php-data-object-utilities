@@ -1,0 +1,54 @@
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Description:</h3>
+		<p>Here are some examples of how the <code>ObjectTailor</code> is used to alter an object's public properties using various attributes.</p>
+	</div>
+</div>
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Examples:</h3>
+		<legend>Processing String values</legend>
+	</div>
+</div>
+<div class="pure-g">
+	<div class="pure-u-1 align-top">
+		<div class="pure-control-group">
+			<label>
+				Trim:<br>
+				<small>#[Trim]</small>
+			</label>
+			<textarea class="form-control" name="trim">
+
+				123
+			
+			</textarea>
+		</div>
+
+		<div class="pure-control-group">
+			<label>
+				Use Default On Empty:<br>
+				<small>#[UseDefaultOnEmpty]<br>Default: 'test'</small>
+			</label>
+			<input type="text" class="form-control" name="default_on_empty" value="">
+		</div>
+
+		<div class="pure-control-group">
+			<label>
+				Str_Replace:<br>
+				<small>#[StrReplace('World', 'You')]</small>
+			</label>
+			<input type="text" class="form-control" name="str_replace" value="Hello World!">
+		</div>
+
+		<div class="pure-control-group">
+			<label>
+				Mix and Match:<br>
+				<small>
+					#[StrReplace(<br>[ 'H', 'W' ],<br>[ 'Hello', 'World' ]<br>)]<br>
+					#[Trim()]
+				</small>
+			</label>
+			<input type="text" class="form-control" name="mixed" value="   H W!">
+		</div>
+	</div>
+</div>

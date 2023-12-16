@@ -124,7 +124,8 @@
 			border-style: solid;
 			border-color: #e5e5e5;
 			border-width: 1px;
-			border-radius: 4px;;
+			border-radius: 4px;
+			white-space: pre-wrap;
 		}
 	</style>
 	<script>
