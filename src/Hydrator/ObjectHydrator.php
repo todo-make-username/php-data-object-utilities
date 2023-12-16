@@ -7,7 +7,8 @@ use ReflectionClass;
 use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Converter\Attributes\Conversion;
 use TodoMakeUsername\ObjectHelpers\Converter\TypeConverter;
-use TodoMakeUsername\ObjectHelpers\Helper\ObjectHelperInterface;
+use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
+use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
 use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\HydratorAttributeInterface;
 
 class ObjectHydrator implements ObjectHelperInterface
@@ -104,11 +105,16 @@ class ObjectHydrator implements ObjectHelperInterface
 			'is_set'   => $is_set,
 		];
 
-		$value = $this->processHydrationAttributes($Property, $value, $metadata);
-
-		if (!$is_set && (($this->hydrate_data[$property_name] ?? null) === $value))
+		// We don't recursively hydrate attributes on attributes from this project to avoid an infinite loop.
+		// There shouldn't be any attributes on attribute properties, but just in case.
+		if (!($Object instanceof ObjectHelperAttributeInterface))
 		{
-			return true;
+			$value = $this->processHydrationAttributes($Property, $value, $metadata);
+
+			if (!$is_set && (($this->hydrate_data[$property_name] ?? null) === $value))
+			{
+				return true;
+			}
 		}
 
 		$property_type = $Property->getType()?->getName() ?? 'null';

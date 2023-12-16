@@ -2,6 +2,8 @@
 
 namespace TodoMakeUsername\ObjectHelpers\Hydrator\Attributes;
 
+use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
+
 /**
  * The interface for all hydration attributes.
  *
@@ -9,7 +11,7 @@ namespace TodoMakeUsername\ObjectHelpers\Hydrator\Attributes;
  *
  * ReflectionProperty:$Property, bool:$is_set
  */
-interface HydratorAttributeInterface
+interface HydratorAttributeInterface extends ObjectHelperAttributeInterface
 {
 	/**
 	 * Process the value before hydration.
