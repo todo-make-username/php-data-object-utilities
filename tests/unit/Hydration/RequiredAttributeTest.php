@@ -45,5 +45,7 @@ class RequiredAttributeTest extends TestCase
 		$this->expectExceptionMessage("A value is required for 'field2'.");
 
 		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
+
+		$this->fail('This should have failed.');
 	}
 }
