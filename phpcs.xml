@@ -1,6 +1,8 @@
 <ruleset name="coding-style">
     <description>My Coding Style</description>
 
+    <exclude-pattern>/tests/*</exclude-pattern>
+
     <file>./src</file>
     <file>./demo</file>
 

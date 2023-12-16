@@ -110,11 +110,12 @@ class ObjectHydrator implements ObjectHelperInterface
 		if (!($Object instanceof ObjectHelperAttributeInterface))
 		{
 			$value = $this->processHydrationAttributes($Property, $value, $metadata);
+		}
 
-			if (!$is_set && (($this->hydrate_data[$property_name] ?? null) === $value))
-			{
-				return true;
-			}
+		// If the value wasn't passed in, and the hydration didn't change the value, just move on.
+		if (!$is_set && (($this->hydrate_data[$property_name] ?? null) === $value))
+		{
+			return true;
 		}
 
 		$property_type = $Property->getType()?->getName() ?? 'null';
