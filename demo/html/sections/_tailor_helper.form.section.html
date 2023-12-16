@@ -2,6 +2,8 @@
 	<div class="pure-u-1">
 		<h3>Description:</h3>
 		<p>Here are some examples of how the <code>ObjectTailor</code> is used to alter an object's public properties using various attributes.</p>
+		<p>Taloring attributes are processed in order from top to bottom.</p>
+		<p>Side Note: One of the more useful combinations is using <code>Trim</code> followed up by <code>UseDefaultOnEmpty</code>.</p>
 	</div>
 </div>
 <div class="pure-g">
@@ -42,13 +44,26 @@
 
 		<div class="pure-control-group">
 			<label>
+				Useful Mix:<br>
+				<small>
+					Field has spaces<br>
+					#[Trim]<br>
+					#[UseDefaultOnEmpty]<br>
+					Default: 'I was empty'
+				</small>
+			</label>
+			<input type="text" class="form-control" name="useful_mix" value="    ">
+		</div>
+
+		<div class="pure-control-group">
+			<label>
 				Mix and Match:<br>
 				<small>
 					#[StrReplace(<br>[ 'H', 'W' ],<br>[ 'Hello', 'World' ]<br>)]<br>
-					#[Trim()]
+					#[Trim]
 				</small>
 			</label>
-			<input type="text" class="form-control" name="mixed" value="   H W!">
+			<input type="text" class="form-control" name="custom_mix" value="   H W!">
 		</div>
 	</div>
 </div>

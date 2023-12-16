@@ -96,13 +96,8 @@ class ObjectTailor implements ObjectHelperInterface
 	{
 		$property_name  = $Property->name;
 		$is_initialized = $Property->isInitialized($Object);
-		$initial_value  = null;
+		$initial_value  = ($is_initialized) ? $Object->{$property_name} : $Property->getDefaultValue();
 		$value          = null;
-
-		if ($is_initialized)
-		{
-			$initial_value = $Object->{$property_name};
-		}
 
 		// This metadata is used to hydrate Tailor attributes.
 		$metadata = [
@@ -117,6 +112,7 @@ class ObjectTailor implements ObjectHelperInterface
 			$value = $this->processTailorAttributes($Property, $initial_value, $metadata);
 		}
 
+		// This is here so we don't overwrite unitialized properties.
 		if ($initial_value === $value)
 		{
 			return true;

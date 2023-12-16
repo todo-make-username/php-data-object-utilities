@@ -11,7 +11,7 @@ use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
  *
  * The constructor args are the same ones used in str_replace. $subject and $count are omitted for obvious reasons.
  *
- * Can only be used on types that can be interpreted as a string.
+ * Can only be used on types that can be interpreted as a string. Others are ignored.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class StrReplace implements TailorAttributeInterface

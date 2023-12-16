@@ -17,9 +17,13 @@ class TailorHelperObj implements ObjInterface
 	#[StrReplace('World', 'You')]
 	public string $str_replace;
 
+	#[Trim]
+	#[UseDefaultOnEmpty]
+	public string $useful_mix = 'I was empty';
+
 	#[StrReplace([ 'H', 'W' ], [ 'Hello', 'World' ])]
 	#[Trim()]
-	public string $mixed;
+	public string $custom_mix;
 
 	/**
 	 * {@inheritDoc}
@@ -30,7 +34,8 @@ class TailorHelperObj implements ObjInterface
 			'trim'             => $this->trim,
 			'default_on_empty' => $this->default_on_empty,
 			'str_replace'      => $this->str_replace,
-			'mixed'            => $this->mixed,
+			'useful_mix'       => $this->useful_mix,
+			'custom_mix'       => $this->custom_mix,
 		];
 	}
 }

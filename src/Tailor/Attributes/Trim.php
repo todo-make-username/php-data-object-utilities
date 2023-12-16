@@ -9,7 +9,7 @@ use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
 /**
  * Calls the trim() function on the value.
  *
- * Can only be used on types that can be interpreted as a string.
+ * Can only be used on types that can be interpreted as a string. Others are ignored.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class Trim implements TailorAttributeInterface
