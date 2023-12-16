@@ -3,7 +3,7 @@
 		<h3>Description:</h3>
 		<p>This is an example of auto conversion is used during hydration. By default, all conversions are strict, meaning the value before must loosely match the value after <code>'123' == 123</code>.</p>
 		<p>An optional <code>Conversion</code> attribute can be set on a property to allow loose conversions. An example can be seen below.</p>
-		<p>Bools are where this gets fun as PHP has smart conversions for it. yes/no, 1/0, 'true'/'false' all cleanly convert to boolean. Setting the strict flag to false on a bool field will allow truthy/falsey values. For everyone's sanity, empty values are not affected by the strict flag and are simply converted to false.</p>
+		<p>Bools are where this gets fun as PHP has smart conversions for it. yes/no, 1/0, 'true'/'false' all cleanly convert to boolean. Setting the strict flag to false on a bool field will allow truthy/falsey values. For everyone's sanity, values that are set but empty are not affected by the strict flag and are simply converted to false.</p>
 		<p>Arrays are converted only from strings. They can either be csv or json.</p>
 	</div>
 </div>
@@ -53,12 +53,20 @@
 
 		<div class="pure-control-group">
 			<label>
-				Bool Dropdown:<br>
+				Bool Dropdown:
 			</label>
 			<select name="val_bool_dropdown">
 				<option selected>Yes</option>
 				<option>No</option>
 			</select>
+		</div>
+
+		<div class="pure-control-group">
+			<label>
+				Bool Truthy:<br>
+				<small>#[Conversion(strict: false)]</small>
+			</label>
+			<input type="text" class="form-control" name="val_bool_truthy" value="any text means true">
 		</div>
 
 		<div class="pure-control-group">
