@@ -169,11 +169,6 @@ class TypeConverter
 	 */
 	public static function convertToArray(mixed $value, array $metadata=[]): array
 	{
-		if (is_array($value))
-		{
-			return $value;
-		}
-
 		if (empty($value))
 		{
 			return [];
