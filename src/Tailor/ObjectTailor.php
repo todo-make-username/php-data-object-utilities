@@ -88,7 +88,7 @@ class ObjectTailor implements ObjectHelperInterface
 	/**
 	 * Tailor an object's property.
 	 *
-	 * @param object             $Object   The object with the property to hydrate.
+	 * @param object             $Object   The object with the property to tailor.
 	 * @param ReflectionProperty $Property The property Relection object.
 	 * @return boolean Return false on error.
 	 */
