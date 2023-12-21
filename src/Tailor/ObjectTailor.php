@@ -8,7 +8,7 @@ use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
+use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\AbstractTailorAttribute;
 
 /**
  * This class uses property attributes to alter (tailor) the data stored in public properties.
@@ -135,7 +135,7 @@ class ObjectTailor implements ObjectHelperInterface
 	 */
 	protected function processTailorAttributes(ReflectionProperty $Property, mixed $value, array $metadata=[]): mixed
 	{
-		$ReflectionAttributes = $Property->getAttributes(TailorAttributeInterface::class, ReflectionAttribute::IS_INSTANCEOF);
+		$ReflectionAttributes = $Property->getAttributes(AbstractTailorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
 
 		foreach ($ReflectionAttributes as $ReflectionAttributes)

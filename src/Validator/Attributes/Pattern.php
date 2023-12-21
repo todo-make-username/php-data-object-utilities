@@ -14,10 +14,8 @@ use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidationFailureException;
  * Can only be used on types that can be interpreted as a string. Others are ignored.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Pattern implements ValidatorAttributeInterface
+class Pattern extends AbstractValidatorAttribute
 {
-	public ReflectionProperty $Property;
-	public bool $is_initialized = false;
 
 	/**
 	 * The constructor

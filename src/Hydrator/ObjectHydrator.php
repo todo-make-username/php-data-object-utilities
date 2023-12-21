@@ -7,9 +7,9 @@ use ReflectionClass;
 use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Converter\Attributes\Conversion;
 use TodoMakeUsername\ObjectHelpers\Converter\TypeConverter;
+use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\AbstractHydratorAttribute;
 use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\HydratorAttributeInterface;
 
 class ObjectHydrator implements ObjectHelperInterface
 {
@@ -136,7 +136,7 @@ class ObjectHydrator implements ObjectHelperInterface
 	 */
 	protected function processHydrationAttributes(ReflectionProperty $Property, mixed $value, array $metadata=[]): mixed
 	{
-		$ReflectionAttributes = $Property->getAttributes(HydratorAttributeInterface::class, ReflectionAttribute::IS_INSTANCEOF);
+		$ReflectionAttributes = $Property->getAttributes(AbstractHydratorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
 
 		foreach ($ReflectionAttributes as $ReflectionAttributes)

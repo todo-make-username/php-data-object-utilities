@@ -3,7 +3,6 @@
 namespace TodoMakeUsername\ObjectHelpers\Hydrator\Attributes;
 
 use Attribute;
-use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Util\FilesHelper;
 
 /**
@@ -12,15 +11,8 @@ use TodoMakeUsername\ObjectHelpers\Util\FilesHelper;
  * Can only be used on duck, mixed, or array types.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class FileUpload implements HydratorAttributeInterface
+class FileUpload extends AbstractHydratorAttribute
 {
-	/**
-	 * The reflection object of the property this attribute is on.
-	 *
-	 * @var ReflectionProperty
-	 */
-	public ReflectionProperty $Property;
-
 	/**
 	 * The File Upload Constructor
 	 *
@@ -36,8 +28,7 @@ class FileUpload implements HydratorAttributeInterface
 	 */
 	public function process(mixed $value): mixed
 	{
-		$Property      = $this->Property;
-		$property_name = $Property->name;
+		$property_name = $this->Property->name;
 
 		$value = FilesHelper::getRawFileData($property_name);
 

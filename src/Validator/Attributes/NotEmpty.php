@@ -11,11 +11,8 @@ use ReflectionProperty;
  * This ignores uninitialized properties.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class NotEmpty implements ValidatorAttributeInterface
+class NotEmpty extends AbstractValidatorAttribute
 {
-	public ReflectionProperty $Property;
-	public bool $is_initialized = false;
-
 	/**
 	 * The constructor
 	 *

@@ -3,8 +3,6 @@
 namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
 
 use Attribute;
-use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
 
 /**
  * Calls the str_replace() function on the value.
@@ -14,11 +12,8 @@ use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
  * Can only be used on types that can be interpreted as a string. Others are ignored.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class StrReplace implements TailorAttributeInterface
+class StrReplace extends AbstractTailorAttribute
 {
-	public ReflectionProperty $Property;
-	public bool $is_initialized = false;
-
 	/**
 	 * The constructor
 	 *

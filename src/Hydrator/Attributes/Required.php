@@ -3,36 +3,20 @@
 namespace TodoMakeUsername\ObjectHelpers\Hydrator\Attributes;
 
 use Attribute;
-use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
 
 /**
  * The hydration data array must have this property name set as a key.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Required implements HydratorAttributeInterface
+class Required extends AbstractHydratorAttribute
 {
-	/**
-	 * The reflection object of the property this attribute is on.
-	 *
-	 * @var ReflectionProperty
-	 */
-	public ReflectionProperty $Property;
-
-	/**
-	 * If the data was passed in with the hydration data or not.
-	 *
-	 * @var boolean
-	 */
-	public bool $is_set = false;
-
 	/**
 	 * {@inheritDoc}
 	 */
 	public function process(mixed $value): mixed
 	{
-		$Property      = $this->Property;
-		$property_name = $Property->name;
+		$property_name = $this->Property->name;
 
 		if (!$this->is_set)
 		{

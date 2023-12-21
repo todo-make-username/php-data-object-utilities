@@ -8,7 +8,7 @@ use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorAttributeInterface;
+use TodoMakeUsername\ObjectHelpers\Validator\Attributes\AbstractValidatorAttribute;
 
 /**
  * This class usees attributes to validate properties. No values are altered.
@@ -154,7 +154,7 @@ class ObjectValidator implements ObjectHelperInterface
 	 */
 	protected function processTailorAttributes(ReflectionProperty $Property, mixed $value, array $metadata=[]): bool
 	{
-		$ReflectionAttributes = $Property->getAttributes(ValidatorAttributeInterface::class, ReflectionAttribute::IS_INSTANCEOF);
+		$ReflectionAttributes = $Property->getAttributes(AbstractValidatorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
 		$is_valid             = true;
 

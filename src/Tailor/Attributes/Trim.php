@@ -3,8 +3,6 @@
 namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
 
 use Attribute;
-use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
 
 /**
  * Calls the trim() function on the value.
@@ -12,11 +10,8 @@ use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
  * Can only be used on types that can be interpreted as a string. Others are ignored.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Trim implements TailorAttributeInterface
+class Trim extends AbstractTailorAttribute
 {
-	public ReflectionProperty $Property;
-	public bool $is_initialized = false;
-
 	/**
 	 * The constructor
 	 *

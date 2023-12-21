@@ -3,19 +3,14 @@
 namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
 
 use Attribute;
-use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\TailorAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailoringException;
 
 /**
  * Sets the value to the default value of the property if it passes an empty() check.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class UseDefaultOnEmpty implements TailorAttributeInterface
+class UseDefaultOnEmpty extends AbstractTailorAttribute
 {
-	public ReflectionProperty $Property;
-	public bool $is_initialized = false;
-
 	/**
 	 * {@inheritDoc}
 	 */
