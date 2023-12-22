@@ -3,7 +3,6 @@
 namespace TodoMakeUsername\ObjectHelpers\Validator\Attributes;
 
 use Attribute;
-use ReflectionProperty;
 
 /**
  * The value in the attribute must not be empty.

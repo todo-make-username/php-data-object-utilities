@@ -54,9 +54,9 @@ $message = ($is_valid) ? 'Success' : $ObjectValidator->getMessage();
 
 		<div class="pure-control-group">
 			<label>
-				Regex Pattern:<br>
+				Regex Match:<br>
 				<small>
-					#[Pattern(pattern: '/\d+[A-Za-z]+/', fail_message: "The pattern field must be numbers followed by letters.")]
+					#[RegexMatch(pattern: '/^\d+[A-Za-z]+$/', fail_message: "The Regex Match field must be numbers followed by letters.")]
 				</small>
 			</label>
 			<input type="text" class="form-control" name="pattern" value="123abc">

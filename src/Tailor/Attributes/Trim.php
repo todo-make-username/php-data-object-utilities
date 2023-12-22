@@ -3,6 +3,7 @@
 namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
 
 use Attribute;
+use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
 
 /**
  * Calls the trim() function on the value.
@@ -25,7 +26,7 @@ class Trim extends AbstractTailorAttribute
 	 */
 	public function process(mixed $value): mixed
 	{
-		if (!is_string($value))
+		if (!StringHelper::isStringCompatible($value))
 		{
 			return $value;
 		}

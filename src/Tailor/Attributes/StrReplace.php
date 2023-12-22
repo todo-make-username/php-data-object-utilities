@@ -3,6 +3,7 @@
 namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
 
 use Attribute;
+use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
 
 /**
  * Calls the str_replace() function on the value.
@@ -28,12 +29,12 @@ class StrReplace extends AbstractTailorAttribute
 	 */
 	public function process(mixed $value): mixed
 	{
-		if (!is_string($value))
+		if (!StringHelper::isStringCompatible($value))
 		{
 			return $value;
 		}
 
-		$value = str_replace($this->search, $this->replace, $value);
+		$value = str_replace($this->search, $this->replace, strval($value));
 
 		return $value;
 	}

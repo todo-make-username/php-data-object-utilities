@@ -4,7 +4,7 @@ namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 
 use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\Pattern;
+use TodoMakeUsername\ObjectHelpers\Validator\Attributes\RegexMatch;
 
 class ValidatorHelperObj implements ObjInterface
 {
@@ -15,7 +15,7 @@ class ValidatorHelperObj implements ObjInterface
 	#[NotEmpty(fail_message: "The Trimmed Not Empty field must have a non-whitespace value.")]
 	public string $trimmed_not_empty;
 
-	#[Pattern(pattern: '/\d+[A-Za-z]+/', fail_message: "The pattern field must be numbers followed by letters.")]
+	#[RegexMatch(pattern: '/^\d+[A-Za-z]+$/', fail_message: "The pattern field must be numbers followed by letters.")]
 	public string $pattern;
 
 	/**

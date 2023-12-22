@@ -3,7 +3,7 @@
 namespace TodoMakeUsername\ObjectHelpers\Validator\Attributes;
 
 use Attribute;
-use ReflectionProperty;
+use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidationFailureException;
 
 /**
@@ -14,7 +14,7 @@ use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidationFailureException;
  * Can only be used on types that can be interpreted as a string. Others are ignored.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Pattern extends AbstractValidatorAttribute
+class RegexMatch extends AbstractValidatorAttribute
 {
 
 	/**
@@ -36,10 +36,12 @@ class Pattern extends AbstractValidatorAttribute
 			return true;
 		}
 
-		if (!is_string($value))
+		if (!StringHelper::isStringCompatible($value))
 		{
 			return true;
 		}
+
+		$value = strval($value);
 
 		$match_result = preg_match($this->pattern, $value);
 
