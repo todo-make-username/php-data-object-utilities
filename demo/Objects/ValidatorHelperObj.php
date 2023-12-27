@@ -5,18 +5,23 @@ namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\RegexMatch;
+use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidationMessage;
 
 class ValidatorHelperObj implements ObjInterface
 {
-	#[NotEmpty(fail_message: "The Not Empty field must not be empty.")]
+	#[NotEmpty]
 	public $not_empty;
 
 	#[Trim]
-	#[NotEmpty(fail_message: "The Trimmed Not Empty field must have a non-whitespace value.")]
+	#[NotEmpty]
 	public string $trimmed_not_empty;
 
-	#[RegexMatch(pattern: '/^\d+[A-Za-z]+$/', fail_message: "The pattern field must be numbers followed by letters.")]
+	#[RegexMatch(pattern: '/^\d+[A-Za-z]+$/')]
 	public string $pattern;
+
+	#[NotEmpty]
+	#[ValidationMessage(NotEmpty::class, 'This is my custom error message!')]
+	public $custom_message;
 
 	/**
 	 * {@inheritDoc}
@@ -27,6 +32,7 @@ class ValidatorHelperObj implements ObjInterface
 			'not_empty'         => $this->not_empty ?? null,
 			'trimmed_not_empty' => $this->trimmed_not_empty ?? null,
 			'pattern'           => $this->pattern ?? null,
+			'custom_message'    => $this->custom_message ?? null,
 		];
 	}
 }

@@ -29,7 +29,7 @@ class StrReplace extends AbstractTailorAttribute
 	 */
 	public function process(mixed $value): mixed
 	{
-		if (!StringHelper::isStringCompatible($value))
+		if (!is_string($value))
 		{
 			return $value;
 		}

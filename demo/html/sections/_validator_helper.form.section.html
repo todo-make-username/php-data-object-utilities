@@ -3,7 +3,8 @@
 		<h3>Description:</h3>
 		<p>Here are some examples of how the <code>ObjectValidator</code> is used to validate an object's public properties using various attributes.</p>
 		<p>validate() and isValid() do the same thing.</p>
-		<p>Validation attributes are processed in order from top to bottom and each one should pass in a failure message into the constuctor.</p>
+		<p>Validation attributes are processed in order from top to bottom.</p>
+		<p>Messages can be customized with the ValidationMessage attribute.</p>
 		<p>Quick tip: One of the more useful combinations is using <code>Trim</code> followed up by <code>NotEmpty</code>.</p>
 	</div>
 </div>
@@ -36,7 +37,7 @@ $message = ($is_valid) ? 'Success' : $ObjectValidator->getMessage();
 		<div class="pure-control-group">
 			<label>
 				Not Empty:<br>
-				<small>#[NotEmpty(fail_message: "The Not Empty field must not be empty.")]</small>
+				<small>#[NotEmpty]</small>
 			</label>
 			<input type="text" class="form-control" name="not_empty" value="Delete the text to fail">
 		</div>
@@ -46,7 +47,7 @@ $message = ($is_valid) ? 'Success' : $ObjectValidator->getMessage();
 				Trimmed Not Empty:<br>
 				<small>
 					#[Trim]<br>
-					#[NotEmpty(fail_message: "The Trimmed Not Empty field must have a non-whitespace value.")]
+					#[NotEmpty]
 				</small>
 			</label>
 			<input type="text" class="form-control" name="trimmed_not_empty" value="   Delete the text to fail   ">
@@ -54,9 +55,20 @@ $message = ($is_valid) ? 'Success' : $ObjectValidator->getMessage();
 
 		<div class="pure-control-group">
 			<label>
+				Not Empty Custom Message:<br>
+				<small>
+					#[NotEmpty]<br>
+					#[ValidationMessage(NotEmpty::class, 'This is my custom error message!')]
+				</small>
+			</label>
+			<input type="text" class="form-control" name="custom_message" value="Delete me to see custom message">
+		</div>
+
+		<div class="pure-control-group">
+			<label>
 				Regex Match:<br>
 				<small>
-					#[RegexMatch(pattern: '/^\d+[A-Za-z]+$/', fail_message: "The Regex Match field must be numbers followed by letters.")]
+					#[RegexMatch(pattern: '/^\d+[A-Za-z]+$/')]
 				</small>
 			</label>
 			<input type="text" class="form-control" name="pattern" value="123abc">

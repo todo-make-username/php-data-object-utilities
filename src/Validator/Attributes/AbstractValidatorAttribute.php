@@ -19,7 +19,7 @@ abstract class AbstractValidatorAttribute implements ObjectHelperAttributeInterf
 	 *
 	 * @var boolean
 	 */
-	public bool $is_initialized = false;
+	public bool $is_initialized;
 
 	/**
 	 * Validate the value.
@@ -27,5 +27,12 @@ abstract class AbstractValidatorAttribute implements ObjectHelperAttributeInterf
 	 * @param mixed $value The value to validate.
 	 * @return boolean Returns if the validation passed.
 	 */
-	abstract public function process(mixed $value): bool;
+	abstract public function validate(mixed $value): bool;
+
+	/**
+	 * Get the generic message to use if this validation does not pass.
+	 *
+	 * @return string
+	 */
+	abstract public function getFailMessage(): string;
 }

@@ -19,7 +19,7 @@ if (!is_null($Obj))
 		$NewObj          = (new ObjectHydrator($Obj))->hydrate($_POST)->getObject();
 		$NewObj          = (new ObjectTailor($NewObj))->tailor()->getObject();
 		$ObjectValidator = new ObjectValidator($NewObj);
-		$message         = ($ObjectValidator->validate()) ? 'Success' : $ObjectValidator->getMessage();
+		$message         = ($ObjectValidator->validate()) ? 'Success' : implode(PHP_EOL, $ObjectValidator->getMessages());
 		$serialized_obj  = $NewObj->toArray();
 	}
 	catch(Exception $e)

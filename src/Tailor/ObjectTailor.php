@@ -138,9 +138,9 @@ class ObjectTailor implements ObjectHelperInterface
 		$ReflectionAttributes = $Property->getAttributes(AbstractTailorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
 
-		foreach ($ReflectionAttributes as $ReflectionAttributes)
+		foreach ($ReflectionAttributes as $ReflectionAttribute)
 		{
-			$Attribute = $ReflectionAttributes->newInstance();
+			$Attribute = $ReflectionAttribute->newInstance();
 			$Attribute = $Hydrator->setObject($Attribute)->hydrate($metadata)->getObject();
 			$value     = $Attribute->process($value);
 		}

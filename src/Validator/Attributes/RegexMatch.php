@@ -4,7 +4,7 @@ namespace TodoMakeUsername\ObjectHelpers\Validator\Attributes;
 
 use Attribute;
 use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidationFailureException;
+use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;
 
 /**
  * The value in the attribute must not be empty.
@@ -20,16 +20,23 @@ class RegexMatch extends AbstractValidatorAttribute
 	/**
 	 * The constructor
 	 *
-	 * @param string $fail_message The message used when this property fails validation on this attribute.
-	 * @param string $pattern      The regex pattern to validate this property.
+	 * @param string $pattern The regex pattern to validate this property.
 	 */
-	public function __construct(public string $fail_message="", protected string $pattern='')
+	public function __construct(protected string $pattern='')
 	{}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function process(mixed $value): bool
+	public function getFailMessage(): string
+	{
+		return 'The "'.$this->Property->name.'" field must match the following pattern: '.$this->pattern;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function validate(mixed $value): bool
 	{
 		if (!$this->is_initialized)
 		{
@@ -46,7 +53,7 @@ class RegexMatch extends AbstractValidatorAttribute
 		$match_result = preg_match($this->pattern, $value);
 
 		if ($match_result === null) {
-			throw new ObjectValidationFailureException("Invalid pattern used to validate field. '".$this->pattern."'");
+			throw new ObjectValidatorException("Invalid pattern used to validate field. '".$this->pattern."'");
 		}
 
 		return ($match_result === 1);

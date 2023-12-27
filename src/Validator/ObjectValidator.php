@@ -9,6 +9,7 @@ use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\AbstractValidatorAttribute;
+use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidationMessage;
 
 /**
  * This class usees attributes to validate properties. No values are altered.
@@ -18,7 +19,7 @@ class ObjectValidator implements ObjectHelperInterface
 	protected ?object $Object;
 	protected bool    $is_valid         = false;
 	protected string  $validation_error = '';
-	protected string  $message          = '';
+	protected array   $messages         = [];
 
 	/**
 	 * The constructor.
@@ -53,15 +54,25 @@ class ObjectValidator implements ObjectHelperInterface
 		return $this->Object;
 	}
 
-
 	/**
-	 * Get the validation message that was retrieved from the last failed validation attribute.
+	 * Get the last validation message.
 	 *
 	 * @return string
 	 */
 	public function getMessage(): string
 	{
-		return $this->message;
+		$number_of_messages = count($this->messages);
+		return ($number_of_messages > 0) ? $this->messages[$number_of_messages - 1] : [];
+	}
+
+	/**
+	 * Get all the validation messages.
+	 *
+	 * @return array
+	 */
+	public function getMessages(): array
+	{
+		return $this->messages;
 	}
 
 	/**
@@ -81,6 +92,7 @@ class ObjectValidator implements ObjectHelperInterface
 	 */
 	public function validate(): bool
 	{
+		$this->messages = [];
 		$this->is_valid = $this->validateObject($this->Object);
 
 		return $this->is_valid;
@@ -94,22 +106,19 @@ class ObjectValidator implements ObjectHelperInterface
 	 */
 	protected function validateObject(object $Object): bool
 	{
-		$this->is_valid         = false;
-		$this->validation_error = '';
-		$this->message          = '';
-
 		$ReflectionClass       = new ReflectionClass($Object::class);
 		$ReflectiionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
+		$object_is_valid       = true;
 
 		foreach ($ReflectiionProperties as $Property)
 		{
 			if (!$this->validateObjectProperty($Object, $Property))
 			{
-				return false;
+				$object_is_valid = false;
 			}
 		}
 
-		return true;
+		return $object_is_valid;
 	}
 
 	/**
@@ -156,21 +165,52 @@ class ObjectValidator implements ObjectHelperInterface
 	{
 		$ReflectionAttributes = $Property->getAttributes(AbstractValidatorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
+		$fail_messages_map    = (count($ReflectionAttributes) > 0) ? $this->getValidationFailureMessages($Property) : [];
+		$property_is_valid    = true;
 		$is_valid             = true;
 
-		foreach ($ReflectionAttributes as $ReflectionAttributes)
+		foreach ($ReflectionAttributes as $ReflectionAttribute)
 		{
-			$Attribute = $ReflectionAttributes->newInstance();
+			$Attribute = $ReflectionAttribute->newInstance();
 			$Attribute = $Hydrator->setObject($Attribute)->hydrate($metadata)->getObject();
-			$is_valid  = $Attribute->process($value);
+			$is_valid  = $Attribute->validate($value);
 
 			if (!$is_valid)
 			{
-				$this->message = $Attribute->fail_message;
-				return $is_valid;
+				$property_is_valid = false;
+				$ValidationMessage = $fail_messages_map[$Attribute::class] ?? null;
+				$message           = $ValidationMessage?->message ?? $Attribute->getFailMessage();
+				$this->messages[]  = $message;
+
+				if ($ValidationMessage?->throw_exception ?? false)
+				{
+					throw new ObjectValidationFailureException($message);
+				}
+
 			}
 		}
 
-		return $is_valid;
+		return $property_is_valid;
+	}
+
+	/**
+	 * Get a map of all the validation classes to their ValidationMessage class.
+	 *
+	 * @param ReflectionProperty $Property The property which might have validation attributes.
+	 * @return array
+	 */
+	protected function getValidationFailureMessages(ReflectionProperty $Property): array
+	{
+		$map = [];
+
+		$ReflectionAttributes = $Property->getAttributes(ValidationMessage::class, ReflectionAttribute::IS_INSTANCEOF);
+		foreach ($ReflectionAttributes as $ReflectionAttribute)
+		{
+			$Attribute = $ReflectionAttribute->newInstance();
+
+			$map[$Attribute->attribute_class] = $Attribute;
+		}
+
+		return $map;
 	}
 }

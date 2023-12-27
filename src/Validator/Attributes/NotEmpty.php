@@ -6,24 +6,22 @@ use Attribute;
 
 /**
  * The value in the attribute must not be empty.
- *
- * This ignores uninitialized properties.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class NotEmpty extends AbstractValidatorAttribute
 {
 	/**
-	 * The constructor
-	 *
-	 * @param string $fail_message The message used when this property fails validation on this attribute.
+	 * {@inheritDoc}
 	 */
-	public function __construct(public string $fail_message="")
-	{}
+	public function getFailMessage(): string
+	{
+		return 'The "'.$this->Property->name.'" field must contain a value.';
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function process(mixed $value): bool
+	public function validate(mixed $value): bool
 	{
 		return (!empty($value));
 	}

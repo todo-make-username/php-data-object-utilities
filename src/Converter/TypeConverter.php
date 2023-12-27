@@ -195,7 +195,9 @@ class TypeConverter
 				if (count($lines) === 1)
 				{
 					$csv_value = str_getcsv($lines[0]);
-				} else {
+				}
+				else
+				{
 					foreach ($lines as $line)
 					{
 						$csv_value[] = str_getcsv($line);
