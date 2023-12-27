@@ -78,6 +78,8 @@ class ObjectValidator implements ObjectHelperInterface
 	/**
 	 * Check if the object is valid and returns a boolean.
 	 *
+	 * This method can not be chained.
+	 *
 	 * @return boolean
 	 */
 	public function isValid(): bool
@@ -87,6 +89,8 @@ class ObjectValidator implements ObjectHelperInterface
 
 	/**
 	 * Check if the object is valid and returns a boolean.
+	 *
+	 * This method can not be chained.
 	 *
 	 * @return boolean
 	 */
@@ -165,7 +169,7 @@ class ObjectValidator implements ObjectHelperInterface
 	{
 		$ReflectionAttributes = $Property->getAttributes(AbstractValidatorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
-		$fail_messages_map    = (count($ReflectionAttributes) > 0) ? $this->getValidationFailureMessages($Property) : [];
+		$fail_messages_map    = (count($ReflectionAttributes) > 0) ? $this->getCustomValidationFailureMessages($Property) : [];
 		$property_is_valid    = true;
 		$is_valid             = true;
 
@@ -199,7 +203,7 @@ class ObjectValidator implements ObjectHelperInterface
 	 * @param ReflectionProperty $Property The property which might have validation attributes.
 	 * @return array
 	 */
-	protected function getValidationFailureMessages(ReflectionProperty $Property): array
+	protected function getCustomValidationFailureMessages(ReflectionProperty $Property): array
 	{
 		$map = [];
 

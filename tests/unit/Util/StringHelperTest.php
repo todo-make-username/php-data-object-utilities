@@ -30,7 +30,8 @@ class StringHelperTest extends TestCase
 				false,
 			],[
 				'Object w/ toString',
-				new class() {
+				new class()
+				{
 					public function __toString()
 					{
 						return 'I\'m a string!';
@@ -46,6 +47,7 @@ class StringHelperTest extends TestCase
 	 */
 	public function testIsStringCompatible(string $test_name, $value, bool $expected)
 	{
+		($test_name);
 		$result = StringHelper::isStringCompatible($value);
 		$this->assertSame($expected, $result);
 	}
