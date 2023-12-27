@@ -3,7 +3,6 @@
 namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
 
 /**
  * Calls the str_replace() function on the value.
