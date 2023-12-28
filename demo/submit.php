@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
+use TodoMakeUsername\ObjectHelpers\ObjectHelper;
 use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
 use TodoMakeUsername\ObjectHelpersDemo\Util\ObjectFactory;
@@ -16,11 +17,11 @@ if (!is_null($Obj))
 {
 	try
 	{
-		$NewObj          = (new ObjectHydrator($Obj))->hydrate($_POST)->getObject();
-		$NewObj          = (new ObjectTailor($NewObj))->tailor()->getObject();
-		$ObjectValidator = new ObjectValidator($NewObj);
-		$message         = ($ObjectValidator->validate()) ? 'Success' : implode(PHP_EOL, $ObjectValidator->getMessages());
-		$serialized_obj  = $NewObj->toArray();
+		$ObjectHelper   = new ObjectHelper($Obj);
+		$is_valid       = $ObjectHelper->hydrate($_POST)->tailor()->isValid();
+		$NewObj         = $ObjectHelper->getObject();
+		$message        = ($is_valid) ? 'Success' : implode(PHP_EOL, $ObjectHelper->getValidatorMessages());
+		$serialized_obj = $NewObj->toArray();
 	}
 	catch(Exception $e)
 	{
@@ -30,7 +31,6 @@ if (!is_null($Obj))
 
 $response = [
 	'message'    => $message,
-	'hydrated'   => !is_null($NewObj),
 	'post'       => $_POST,
 	'files'      => $_FILES,
 	'serialized' => $serialized_obj,

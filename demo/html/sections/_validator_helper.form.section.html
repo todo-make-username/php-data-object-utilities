@@ -2,7 +2,6 @@
 	<div class="pure-u-1">
 		<h3>Description:</h3>
 		<p>Here are some examples of how the <code>ObjectValidator</code> is used to validate an object's public properties using various attributes.</p>
-		<p>validate() and isValid() do the same thing.</p>
 		<p>Validator attributes are processed in order from top to bottom.</p>
 		<p>Messages can be customized with the ValidatorMessage attribute.</p>
 		<p>Quick tip: One of the more useful combinations is using <code>Trim</code> followed up by <code>NotEmpty</code>.</p>
@@ -16,7 +15,7 @@
 		</pre>
 		<pre class="example">$is_valid = (new ObjectValidator())
 			->setObject($Obj)
-			->validate();
+			->isValid();
 		</pre>
 		<pre class="example">
 $ObjectValidator = new ObjectValidator($Obj);

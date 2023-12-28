@@ -2,8 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorFailureException;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
 
 /**
@@ -19,7 +17,7 @@ class ValidatorTest extends TestCase
 		};
 
 		$Validator = new ObjectValidator($TestObj);
-		$result = $Validator->validate();
+		$result = $Validator->isValid();
 		$this->assertTrue($result);
 	}
 

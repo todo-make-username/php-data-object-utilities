@@ -159,7 +159,6 @@
 		function resetResponseSection() {
 			populateResponseSection({
 				'message': '',
-				'hydrated': '',
 				'serialized': {},
 				'post': {},
 				'files': [],
@@ -193,7 +192,6 @@
 
 		function populateResponseSection(response_data) {
 			$('#output_container #message').text(response_data['message']);
-			$('#output_container #hydrated').text(response_data['hydrated']);
 			$('#output_container #serialized').text(JSON.stringify(response_data['serialized'], null, 4));
 			$('#output_container #post').text(JSON.stringify(response_data['post'], null, 4));
 			$('#output_container #files').text(JSON.stringify(response_data['files'], null, 4));
@@ -287,10 +285,6 @@
 		</div>
 		<div class="pure-u-2-5">
 			<div id="output_container">
-				<div class="pure-g">
-					<div class="pure-u-1-4 align-top">Hydrated:</div>
-					<pre id="hydrated" class="pure-u-3-4"></pre>
-				</div>
 				<div class="pure-g">
 					<div class="pure-u-1-4 align-top">Message:</div>
 					<pre id="message" class="pure-u-3-4"></pre>

@@ -84,18 +84,6 @@ class ObjectValidator implements ObjectHelperInterface
 	 */
 	public function isValid(): bool
 	{
-		return $this->validate();
-	}
-
-	/**
-	 * Check if the object is valid and returns a boolean.
-	 *
-	 * This method can not be chained.
-	 *
-	 * @return boolean
-	 */
-	public function validate(): bool
-	{
 		$this->messages = [];
 		$this->is_valid = $this->validateObject($this->Object);
 
