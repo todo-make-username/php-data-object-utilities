@@ -51,7 +51,7 @@ class TypeConversionTest extends TestCase
 		};
 
 		$this->expectException(ConversionException::class);
-		$this->expectExceptionMessage('Failed to convert value to: int');
+		$this->expectExceptionMessage('Failed to convert string to int');
 
 		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
 
@@ -163,7 +163,7 @@ class TypeConversionTest extends TestCase
 		};
 
 		$this->expectException(ConversionException::class);
-		$this->expectExceptionMessage('Failed to convert value to: bool');
+		$this->expectExceptionMessage('Failed to convert string to bool');
 
 		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
 
@@ -231,7 +231,7 @@ class TypeConversionTest extends TestCase
 		};
 
 		$this->expectException(ConversionException::class);
-		$this->expectExceptionMessage('Failed to convert value to: float');
+		$this->expectExceptionMessage('Failed to convert array to float');
 
 		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
 
@@ -299,7 +299,7 @@ class TypeConversionTest extends TestCase
 		};
 
 		$this->expectException(ConversionException::class);
-		$this->expectExceptionMessage('Failed to convert value to: string');
+		$this->expectExceptionMessage('Failed to convert object to string');
 
 		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
 
@@ -374,7 +374,7 @@ class TypeConversionTest extends TestCase
 		};
 
 		$this->expectException(ConversionException::class);
-		$this->expectExceptionMessage('Failed to convert value to: array');
+		$this->expectExceptionMessage('Failed to convert string to array');
 
 		$Obj = (new ObjectHydrator($Obj))->hydrate([ 'array' => '{bad json}' ])->getObject();
 
