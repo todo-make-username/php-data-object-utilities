@@ -1,0 +1,20 @@
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Description:</h3>
+		<p>This is a helper class that you can use as a wrapper for all the functionality in this library.</p>
+		<p>For a practical example: The examples in this demo use this helper <code>submit.php</code>.</p>
+	</div>
+</div>
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Usage Example:</h3>
+		<pre class="example">$ObjectHelper = new ObjectHelper($Obj);
+$is_valid     = $ObjectHelper
+        ->hydrate($_POST)
+	->tailor()
+	->isValid();
+$NewObj       = $ObjectHelper->getObject();
+$messages     = $ObjectHelper->getValidatorMessages();
+		</pre>
+	</div>
+</div>
