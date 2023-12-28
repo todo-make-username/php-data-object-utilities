@@ -72,7 +72,7 @@ class TypeConverter
 		}
 		catch (\Throwable $th)
 		{
-			throw new ConversionException('Failed to convert value to: string.');
+			throw new ConversionException('Failed to convert '.gettype($value).' to string.');
 		}
 
 		$value = $new_value;
@@ -100,7 +100,7 @@ class TypeConverter
 
 		if (is_null($new_value))
 		{
-			throw new ConversionException('Failed to convert value to: int');
+			throw new ConversionException('Failed to convert '.gettype($value).' to int');
 		}
 
 		$value = $new_value;
@@ -126,7 +126,7 @@ class TypeConverter
 
 		if (is_null($new_value))
 		{
-			throw new ConversionException('Failed to convert value to: float');
+			throw new ConversionException('Failed to convert '.gettype($value).' to float');
 		}
 
 		$value = $new_value;
@@ -153,7 +153,7 @@ class TypeConverter
 
 		if (is_null($new_value))
 		{
-			throw new ConversionException('Failed to convert value to: bool');
+			throw new ConversionException('Failed to convert '.gettype($value).' to bool');
 		}
 
 		$value = $new_value;
@@ -211,7 +211,7 @@ class TypeConverter
 
 		if (!is_array($value))
 		{
-			throw new ConversionException('Failed to convert value to: array');
+			throw new ConversionException('Failed to convert '.gettype($value).' to array');
 		}
 
 		return $value;
