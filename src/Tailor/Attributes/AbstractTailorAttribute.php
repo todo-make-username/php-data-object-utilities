@@ -16,6 +16,8 @@ abstract class AbstractTailorAttribute
 	/**
 	 * Determines if the object property was initialized or not.
 	 *
+	 * This will ALWAYS be true for non-typed properties. Blame ReflectionProperty not me.
+	 *
 	 * @var boolean
 	 */
 	public bool $is_initialized = false;
