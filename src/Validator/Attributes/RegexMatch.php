@@ -38,23 +38,20 @@ class RegexMatch extends AbstractValidatorAttribute
 	 */
 	public function validate(mixed $value): bool
 	{
-		if (!$this->is_initialized)
-		{
-			return true;
-		}
-
 		if (!StringHelper::isStringCompatible($value))
 		{
-			return true;
+			return false;
 		}
 
-		$value = strval($value);
+		// The @ supressees the warning when the pattern is invalid.
+		// This is intenional as this checks the validity of the pattern before using it.
+		if (@preg_match($this->pattern, '') === false)
+		{
+			throw new ObjectValidatorException("Invalid pattern used to validate '".$this->Property->name."': '".$this->pattern."'");
+		}
 
+		$value        = strval($value);
 		$match_result = preg_match($this->pattern, $value);
-
-		if ($match_result === null) {
-			throw new ObjectValidatorException("Invalid pattern used to validate field. '".$this->pattern."'");
-		}
 
 		return ($match_result === 1);
 	}
