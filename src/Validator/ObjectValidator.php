@@ -149,7 +149,7 @@ class ObjectValidator implements ObjectHelperInterface
 		// There shouldn't be any attributes on attribute properties, but just in case.
 		if (!($Object instanceof ObjectHelperAttributeInterface))
 		{
-			$is_valid = $this->processTailorAttributes($Property, $initial_value, $metadata);
+			$is_valid = $this->processValidatorAttributes($Property, $initial_value, $metadata);
 		}
 
 		return $is_valid;
@@ -165,7 +165,7 @@ class ObjectValidator implements ObjectHelperInterface
 	 * @param array              $metadata Any optional data that might be needed.
 	 * @return boolean
 	 */
-	protected function processTailorAttributes(ReflectionProperty $Property, mixed $value, array $metadata=[]): bool
+	protected function processValidatorAttributes(ReflectionProperty $Property, mixed $value, array $metadata=[]): bool
 	{
 		$ReflectionAttributes = $Property->getAttributes(AbstractValidatorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
