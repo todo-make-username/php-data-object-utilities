@@ -9,7 +9,7 @@ use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\AbstractValidatorAttribute;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidationMessage;
+use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
 
 /**
  * This class usees attributes to validate properties. No values are altered.
@@ -169,7 +169,7 @@ class ObjectValidator implements ObjectHelperInterface
 	{
 		$ReflectionAttributes = $Property->getAttributes(AbstractValidatorAttribute::class, ReflectionAttribute::IS_INSTANCEOF);
 		$Hydrator             = new ObjectHydrator();
-		$fail_messages_map    = (count($ReflectionAttributes) > 0) ? $this->getCustomValidationFailureMessages($Property) : [];
+		$fail_messages_map    = (count($ReflectionAttributes) > 0) ? $this->getCustomValidatorFailureMessages($Property) : [];
 		$property_is_valid    = true;
 		$is_valid             = true;
 
@@ -182,13 +182,13 @@ class ObjectValidator implements ObjectHelperInterface
 			if (!$is_valid)
 			{
 				$property_is_valid = false;
-				$ValidationMessage = $fail_messages_map[$Attribute::class] ?? null;
-				$message           = $ValidationMessage?->message ?? $Attribute->getFailMessage();
+				$ValidatorMessage  = $fail_messages_map[$Attribute::class] ?? null;
+				$message           = $ValidatorMessage?->message ?? $Attribute->getFailMessage();
 				$this->messages[]  = $message;
 
-				if ($ValidationMessage?->throw_exception ?? false)
+				if ($ValidatorMessage?->throw_exception ?? false)
 				{
-					throw new ObjectValidationFailureException($message);
+					throw new ObjectValidatorFailureException($message);
 				}
 
 			}
@@ -198,16 +198,16 @@ class ObjectValidator implements ObjectHelperInterface
 	}
 
 	/**
-	 * Get a map of all the validation classes to their ValidationMessage class.
+	 * Get a map of all the validation classes to their ValidatorMessage class.
 	 *
 	 * @param ReflectionProperty $Property The property which might have validation attributes.
 	 * @return array
 	 */
-	protected function getCustomValidationFailureMessages(ReflectionProperty $Property): array
+	protected function getCustomValidatorFailureMessages(ReflectionProperty $Property): array
 	{
 		$map = [];
 
-		$ReflectionAttributes = $Property->getAttributes(ValidationMessage::class, ReflectionAttribute::IS_INSTANCEOF);
+		$ReflectionAttributes = $Property->getAttributes(ValidatorMessage::class, ReflectionAttribute::IS_INSTANCEOF);
 		foreach ($ReflectionAttributes as $ReflectionAttribute)
 		{
 			$Attribute = $ReflectionAttribute->newInstance();

@@ -2,8 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidationMessage;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidationFailureException;
+use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
+use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorFailureException;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;
 
@@ -17,7 +17,7 @@ class ValidatorMessageTest extends TestCase
 		$TestObj = new class()
 		{
 			#[NotEmpty]
-			#[ValidationMessage(attribute_class: NotEmpty::class, message: 'My fail message')]
+			#[ValidatorMessage(attribute_class: NotEmpty::class, message: 'My fail message')]
 			public $prop1;
 		};
 
@@ -34,11 +34,11 @@ class ValidatorMessageTest extends TestCase
 		$TestObj = new class()
 		{
 			#[NotEmpty]
-			#[ValidationMessage(attribute_class: NotEmpty::class, message: 'prop1 fail message')]
+			#[ValidatorMessage(attribute_class: NotEmpty::class, message: 'prop1 fail message')]
 			public $prop1;
 
 			#[NotEmpty]
-			#[ValidationMessage(NotEmpty::class, 'prop2 fail message')]
+			#[ValidatorMessage(NotEmpty::class, 'prop2 fail message')]
 			public $prop2;
 		};
 
@@ -57,11 +57,11 @@ class ValidatorMessageTest extends TestCase
 		$TestObj = new class()
 		{
 			#[NotEmpty]
-			#[ValidationMessage(attribute_class: NotEmpty::class, message: 'My fail message', throw_exception: true)]
+			#[ValidatorMessage(attribute_class: NotEmpty::class, message: 'My fail message', throw_exception: true)]
 			public $prop1;
 		};
 
-		$this->expectException(ObjectValidationFailureException::class);
+		$this->expectException(ObjectValidatorFailureException::class);
 		$this->expectExceptionMessage('My fail message');
 
 		$Validator = new ObjectValidator($TestObj);
@@ -74,12 +74,12 @@ class ValidatorMessageTest extends TestCase
 		$TestObj = new class()
 		{
 			#[NotEmpty]
-			#[ValidationMessage(attribute_class: DateTime::class, message: 'LOL wut')]
+			#[ValidatorMessage(attribute_class: DateTime::class, message: 'LOL wut')]
 			public $prop1;
 		};
 
 		$this->expectException(ObjectValidatorException::class);
-		$this->expectExceptionMessage("'DateTime' must extend the AbstractValidatorAttribute class to be used with ValidationMessage");
+		$this->expectExceptionMessage("'DateTime' must extend the AbstractValidatorAttribute class to be used with ValidatorMessage");
 
 		$Validator = new ObjectValidator($TestObj);
 		$Validator->isValid();

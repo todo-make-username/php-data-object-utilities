@@ -11,7 +11,7 @@ use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;
  * Without this, a validation attribute would provide a very generic message about what went wrong.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class ValidationMessage
+class ValidatorMessage
 {
 	/**
 	 * The constructor
@@ -28,7 +28,7 @@ class ValidationMessage
 	{
 		if (!(is_subclass_of($attribute_class, AbstractValidatorAttribute::class)))
 		{
-			throw new ObjectValidatorException("'".$attribute_class."' must extend the AbstractValidatorAttribute class to be used with ValidationMessage");
+			throw new ObjectValidatorException("'".$attribute_class."' must extend the AbstractValidatorAttribute class to be used with ValidatorMessage");
 		}
 	}
 }

@@ -4,6 +4,6 @@ namespace TodoMakeUsername\ObjectHelpers\Validator;
 
 use Exception;
 
-class ObjectValidationFailureException extends Exception
+class ObjectValidatorFailureException extends Exception
 {
 }

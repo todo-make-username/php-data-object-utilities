@@ -3,8 +3,8 @@
 		<h3>Description:</h3>
 		<p>Here are some examples of how the <code>ObjectValidator</code> is used to validate an object's public properties using various attributes.</p>
 		<p>validate() and isValid() do the same thing.</p>
-		<p>Validation attributes are processed in order from top to bottom.</p>
-		<p>Messages can be customized with the ValidationMessage attribute.</p>
+		<p>Validator attributes are processed in order from top to bottom.</p>
+		<p>Messages can be customized with the ValidatorMessage attribute.</p>
 		<p>Quick tip: One of the more useful combinations is using <code>Trim</code> followed up by <code>NotEmpty</code>.</p>
 	</div>
 </div>
@@ -58,7 +58,7 @@ $message = ($is_valid) ? 'Success' : $ObjectValidator->getMessage();
 				Not Empty Custom Message:<br>
 				<small>
 					#[NotEmpty]<br>
-					#[ValidationMessage(NotEmpty::class, 'This is my custom error message!')]
+					#[ValidatorMessage(NotEmpty::class, 'This is my custom error message!')]
 				</small>
 			</label>
 			<input type="text" class="form-control" name="custom_message" value="Delete me to see custom message">

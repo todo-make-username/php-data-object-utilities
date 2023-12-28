@@ -5,7 +5,7 @@ namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\RegexMatch;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidationMessage;
+use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
 
 class ValidatorHelperObj implements ObjInterface
 {
@@ -20,7 +20,7 @@ class ValidatorHelperObj implements ObjInterface
 	public string $pattern;
 
 	#[NotEmpty]
-	#[ValidationMessage(NotEmpty::class, 'This is my custom error message!')]
+	#[ValidatorMessage(NotEmpty::class, 'This is my custom error message!')]
 	public $custom_message;
 
 	/**
