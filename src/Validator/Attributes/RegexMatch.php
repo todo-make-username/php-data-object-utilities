@@ -43,8 +43,8 @@ class RegexMatch extends AbstractValidatorAttribute
 			return false;
 		}
 
-		// The @ supressees the warning when the pattern is invalid.
-		// This is intenional as this checks the validity of the pattern before using it.
+		// The @ suppresses the warning when the pattern is invalid.
+		// This is intentional as this checks the validity of the pattern before using it.
 		if (@preg_match($this->pattern, '') === false)
 		{
 			throw new ObjectValidatorException("Invalid pattern used to validate '".$this->Property->name."': '".$this->pattern."'");

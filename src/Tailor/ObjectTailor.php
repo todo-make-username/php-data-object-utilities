@@ -71,10 +71,10 @@ class ObjectTailor implements ObjectHelperInterface
 	 */
 	protected function tailorObject(object $Object): ?object
 	{
-		$ReflectionClass       = new ReflectionClass($Object::class);
-		$ReflectiionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
+		$ReflectionClass      = new ReflectionClass($Object::class);
+		$ReflectionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
 
-		foreach ($ReflectiionProperties as $Property)
+		foreach ($ReflectionProperties as $Property)
 		{
 			if (!$this->tailorObjectProperty($Object, $Property))
 			{
@@ -89,7 +89,7 @@ class ObjectTailor implements ObjectHelperInterface
 	 * Tailor an object's property.
 	 *
 	 * @param object             $Object   The object with the property to tailor.
-	 * @param ReflectionProperty $Property The property Relection object.
+	 * @param ReflectionProperty $Property The property Reflection object.
 	 * @return boolean Return false on error.
 	 */
 	protected function tailorObjectProperty(object $Object, ReflectionProperty $Property): bool

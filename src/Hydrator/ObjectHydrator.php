@@ -72,10 +72,10 @@ class ObjectHydrator implements ObjectHelperInterface
 	 */
 	protected function hydrateObject(object $Object): ?object
 	{
-		$ReflectionClass       = new ReflectionClass($Object::class);
-		$ReflectiionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
+		$ReflectionClass      = new ReflectionClass($Object::class);
+		$ReflectionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
 
-		foreach ($ReflectiionProperties as $Property)
+		foreach ($ReflectionProperties as $Property)
 		{
 			if (!$this->hydrateObjectProperty($Object, $Property))
 			{
@@ -90,7 +90,7 @@ class ObjectHydrator implements ObjectHelperInterface
 	 * Hydrate an object's property.
 	 *
 	 * @param object             $Object   The object with the property to hydrate.
-	 * @param ReflectionProperty $Property The property Relection object.
+	 * @param ReflectionProperty $Property The property Reflection object.
 	 * @return boolean Return false on error.
 	 */
 	protected function hydrateObjectProperty(object $Object, ReflectionProperty $Property): bool

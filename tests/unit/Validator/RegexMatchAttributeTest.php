@@ -31,7 +31,7 @@ class RegexMatchAttributeTest extends TestCase
 		$this->assertFalse($result);
 	}
 
-	public function testRegexValidateFalseUnitializedNoType()
+	public function testRegexValidateFalseUninitializedNoType()
 	{
 		$TestObj = new class()
 		{
@@ -43,7 +43,7 @@ class RegexMatchAttributeTest extends TestCase
 		$this->assertFalse($result);
 	}
 
-	public function testRegexValidateFalseUnitializedTyped()
+	public function testRegexValidateFalseUninitializedTyped()
 	{
 		$TestObj = new class()
 		{

@@ -12,7 +12,7 @@ use TodoMakeUsername\ObjectHelpers\Validator\Attributes\AbstractValidatorAttribu
 use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
 
 /**
- * This class usees attributes to validate properties. No values are altered.
+ * This class uses attributes to validate properties. No values are altered.
  */
 class ObjectValidator implements ObjectHelperInterface
 {
@@ -98,11 +98,11 @@ class ObjectValidator implements ObjectHelperInterface
 	 */
 	protected function validateObject(object $Object): bool
 	{
-		$ReflectionClass       = new ReflectionClass($Object::class);
-		$ReflectiionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
-		$object_is_valid       = true;
+		$ReflectionClass      = new ReflectionClass($Object::class);
+		$ReflectionProperties = $ReflectionClass->getProperties(ReflectionProperty::IS_PUBLIC);
+		$object_is_valid      = true;
 
-		foreach ($ReflectiionProperties as $Property)
+		foreach ($ReflectionProperties as $Property)
 		{
 			if (!$this->validateObjectProperty($Object, $Property))
 			{
@@ -117,7 +117,7 @@ class ObjectValidator implements ObjectHelperInterface
 	 * Validate an object's property.
 	 *
 	 * @param object             $Object   The object with the property to validate.
-	 * @param ReflectionProperty $Property The property Relection object.
+	 * @param ReflectionProperty $Property The property Reflection object.
 	 * @return boolean
 	 */
 	protected function validateObjectProperty(object $Object, ReflectionProperty $Property): bool
