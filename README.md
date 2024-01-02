@@ -37,12 +37,18 @@ That is the niche that this project was built for.
 
 Did I mention that this library is fully extendable? You don't need to use any of my pre-made attributes. You can easily add your own hydration/tailor/validation attributes. As long as they extend my base attribute classes, the helpers will automatically pick up on them.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 ## Requirements
 * PHP >= 8.2
 
 Yup, that's it. Since this doesn't do anything fancy and mostly relies on built-in PHP features, no need for any external libraries for now.
 
 The dev requirements are just the typical phpunit and code sniffer.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Documentation
 This library is fairly simple, it contains three object helpers and one wrapper that incorporates all three. It also contains some pre-made attributes for you to use that take care of some of the more common things. I've also built a demo for you to use and play with. How to run the demo is at the bottom of this readme.
@@ -58,6 +64,9 @@ This library is fairly simple, it contains three object helpers and one wrapper 
 * Sad Fact: This library does not work with readonly properties as those can only be set from within the object itself and cannot be changed once set.
 
 Now, on to the actual docs...
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ### The Hydrator
 This helper takes an assoc array of data and hydrates an object's public properties while also converting the data to the proper types (when it can). The property name must match an array key in the incoming array. The attributes are a way to hook into the assigning of the properties, usually to use the incoming value to do something different than assigning it directly.
@@ -93,6 +102,8 @@ These are set when the specific Attribute class is initialized. They can be used
 * `public ReflectionProperty $Property;` - The ReflectionProperty object to look up information about the property.
 * `public bool $is_set = false;` - This is true if a key matching the property's name is in the incoming array.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ### The Tailor
 This helper tailors (aka alters. Ya know, like a tailor does) the data in an objects public properties.
@@ -120,6 +131,9 @@ These are set when the specific Attribute class is initialized. They can be used
 * `public ReflectionProperty $Property;` - The ReflectionProperty object to look up information about the property.
 * `public bool $is_initialized = false;` - Basically what it says. Tells you if the property has been initialized with a value or not.
 	* **IMPORTANT:** This will ALWAYS be true for non-typed properties, even with no default value. Blame PHP's `ReflectionProperty`, not me.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ### The Validator
 This helper validates the data in an objects public properties and returns `true` if it is all valid. The validation runs on each parameter that has a validation attribute. All failure messages are kept in an array and can be retrieved with the method `getMessages()`.
@@ -162,6 +176,9 @@ When the validation helper analyzes this object, and the value in $email is empt
 
 Side note: As you can see, I'm not using named properties for this since it is fairly simple. First param is the validation attribute the message is for, the second param is the failure message. The attribute declaration for these when using named params can get lengthy, especially for longer messages, so I omitted them in all my examples and demo. Feel free to use named params though, it won't break anything to use them, except maybe your linter.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 ### The ObjectHelper Wrapper:
 This simply wraps all three into a single helper. Everything is processed the same.
 
@@ -172,14 +189,21 @@ $is_valid     = $ObjectHelper->hydrate($_POST)->tailor()->isValid();
 $NewObj       = $ObjectHelper->getObject();
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 ## How to run the demo
 Make a copy of this project via cli or by downloading. Then run this command in the project root:\
 ```SH
 php -S localhost:8000 demo/index.php
 ```
 
-Then use the browser on the same computer to visit the following url:\
+Then use a web browser on the same computer to visit the following url:\
 http://localhost:8000/
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+_<h5>Spaces already have a use, tab indentation is better. #teamtabs</h5>_
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
