@@ -55,7 +55,7 @@ class ObjectTailor implements ObjectHelperInterface
 	/**
 	 * Process the tailor attributes on an object's public properties.
 	 *
-	 * @return ObjectTailor
+	 * @return self
 	 */
 	public function tailor(): ObjectTailor
 	{

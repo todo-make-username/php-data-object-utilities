@@ -9,7 +9,7 @@ use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
 
 class ObjectHelper implements ObjectHelperInterface
 {
-	protected ?object $Object;
+	protected ?object          $Object;
 	protected ?ObjectHydrator  $Hydrator  = null;
 	protected ?ObjectTailor    $Tailor    = null;
 	protected ?ObjectValidator $Validator = null;
@@ -51,7 +51,7 @@ class ObjectHelper implements ObjectHelperInterface
 	 * Hydrate the object's public properties.
 	 *
 	 * @param array $hydrate_data The data to hydrate the object.
-	 * @return ObjectHelper
+	 * @return self
 	 */
 	public function hydrate(array $hydrate_data): ObjectHelper
 	{
@@ -64,7 +64,7 @@ class ObjectHelper implements ObjectHelperInterface
 	/**
 	 * Alter (tailor) the data stored in an object's public properties.
 	 *
-	 * @return ObjectHelper
+	 * @return self
 	 */
 	public function tailor(): ObjectHelper
 	{

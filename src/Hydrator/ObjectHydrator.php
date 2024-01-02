@@ -55,7 +55,7 @@ class ObjectHydrator implements ObjectHelperInterface
 	 * Hydrate the object.
 	 *
 	 * @param array $hydrate_data The data to hydrate the object with.
-	 * @return ObjectHydrator
+	 * @return self
 	 */
 	public function hydrate(array $hydrate_data): ObjectHydrator
 	{

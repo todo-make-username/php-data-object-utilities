@@ -8,7 +8,7 @@ interface ObjectHelperInterface
 	 * Set the object that the helper will use.
 	 *
 	 * @param object $Object The object that the helper will use.
-	 * @return ObjectHelperInterface
+	 * @return self
 	 */
 	public function setObject(object $Object): ObjectHelperInterface;
 
