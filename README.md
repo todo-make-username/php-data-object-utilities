@@ -59,7 +59,7 @@ This library is fairly simple, it contains three object helpers and one wrapper 
 	* Yes, I can technically also do the private/protected properties using reflection. It wont happen because that breaks the whole purpose behind private/protected. That said, if there is a use case that would be deemed essential to have that feature, I can look into opening that up. It better be a good reason though.
 * For attribute arguments, use named parameters. It makes things easier for everyone. You can do it the old way if you want, but I recommend using named parameters where you can for self documenting code.
 * These helpers can be used together or separate. There is no requirement that they must be used together. Unless you use the wrapper of course.
-* Using objects with the `__toString()` method is not fully tested, but should work in most places that a string works in.
+* Hydrating string properties with an object will work as long as the `__toString()` magic method is set up in the incoming object.
 * Fun Fact: I use the hydrator in all the helpers to hydrate the attribute objects. That is why the abstract attribute classes have public properties.
 * Sad Fact: This library cannot work with readonly properties as those can only be set from within the object itself and cannot be changed once set.
 
