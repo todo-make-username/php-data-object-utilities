@@ -10,10 +10,10 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# PHP Object Helpers
-PHP helpers for hydrating and validating objects from arrays using PHP reflection and attributes.
+# PHP8 Object Helpers
+PHP8 helpers for hydrating and validating objects from arrays using PHP reflection and attributes.
 
-Project name is still pending, maybe I can think of something better later.
+**Message from the Author:** This library is fully functional and stable. Is only in the `alpha` state while I add features. If an feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
 
 [Report Bug](https://github.com/todo-make-username/php-object-helpers/issues)
 ·
@@ -47,7 +47,6 @@ Yup, that's it. Since this doesn't do anything fancy and mostly relies on built-
 The dev requirements are just the typical phpunit and code sniffer.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## Documentation
 This library is fairly simple, it contains three object helpers and one wrapper that incorporates all three. It also contains some pre-made attributes for you to use that take care of some of the more common things. I've also built a demo for you to use and play with. How to run the demo is at the bottom of this readme.
@@ -210,6 +209,34 @@ php -S localhost:8000 demo/index.php
 
 Then use a web browser on the same computer to visit the following url:\
 http://localhost:8000/
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Contributing
+**100% Code Coverage ALWAYS!**
+
+I don't normally accept PRs unless they are really important, but I gladly welcome feedback and suggestions via Github Issues. I thrive on constructive criticism.
+
+Bugs of course are submitted via Github Issues as well.
+
+#### Adding New Attributes
+When it comes to adding in new attributes into this library, basically just ask yourself: `Would this is useful for everyone? Or just myself?`.\
+For attributes that are for specific frameworks, they will not be added in here. I recommend creating an attribute library and importing those into your project along with this project.
+
+#### Code Styling Basics
+* curly braces `{ }` start on new lines. Its not my go to, but it is cleaner to look at.
+* run `composer beautify` before staging your commits.
+* Classes are PascalCase.
+* Methods are camelCase.
+* Variables that hold objects use PascalCase, otherwise they use snake_case.
+* Use strict typing as much as possible.
+
+#### Unit Testing Requirements
+* 100% Coverage is a hard requirement.
+* All tests should run like you are actually using the library.
+* Method mocking should be a last resort.
+* You need a really good reason to use `@codeCoverageIgnore` or similar flags.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
