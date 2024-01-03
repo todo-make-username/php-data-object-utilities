@@ -6,7 +6,6 @@
 [![PHP][php-shield]][php-url]
 
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
@@ -220,8 +219,6 @@ _<h5>Spaces already have a use, tab indentation is better. #teamtabs</h5>_
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/todo-make-username/php-object-helpers.svg
 [contributors-url]: https://github.com/todo-make-username/php-object-helpers/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/todo-make-username/php-object-helpers.svg
-[forks-url]: https://github.com/todo-make-username/php-object-helpers/network/members
 [stars-shield]: https://img.shields.io/github/stars/todo-make-username/php-object-helpers.svg
 [stars-url]: https://github.com/todo-make-username/php-object-helpers/stargazers
 [issues-shield]: https://img.shields.io/github/issues/todo-make-username/php-object-helpers.svg
