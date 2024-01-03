@@ -59,7 +59,7 @@ This library is fairly simple, it contains three object helpers and one wrapper 
 	* Yes, I can technically also do the private/protected properties using reflection. It wont happen because that breaks the whole purpose behind private/protected. That said, if there is a use case that would be deemed essential to have that feature, I can look into opening that up. It better be a good reason though.
 * For attribute arguments, use named parameters. It makes things easier for everyone. You can do it the old way if you want, but I recommend using named parameters where you can for self documenting code.
 * These helpers can be used together or separate. There is no requirement that they must be used together. Unless you use the wrapper of course.
-* Hydrating string properties with an object will work as long as the `__toString()` magic method is set up in the incoming object.
+* Hydrating properties which can be converted from a string can be hydrated with an object as long as the `__toString()` magic method is set up.
 * Fun Fact: I use the hydrator in all the helpers to hydrate the attribute objects. That is why the abstract attribute classes have public properties.
 * Sad Fact: This library cannot work with readonly properties as those can only be set from within the object itself and cannot be changed once set.
 
@@ -81,10 +81,8 @@ When hydrating an object, the data that is passed in is not always the type you 
 
 **Conversion Notes:**
 * Bools use PHP's `filter_var` to convert common bool strings. When used with a default value, checkbox values in forms becomes very simple to manage.
-* Arrays can be converted from string. I know, I'm so helpful. Any string that can be parsed from json will be converted to an array. In addition, if that fails, it will attempt to convert from csv. This can lead to weird things if it was not supposed to be converted from csv.
-	* **Probable Future Feature:** This might stop being an automatic conversion and will require a hydration attribute instead, but for now, it is automatic cause I like it.
-* Conversions are skipped if a property does not have strict typing.
-* For simplicity, conversions are also skipped if the data type of a property is some sort of object. That opens too many cans of worms to deal with. You'll need to make your own custom Hydration attribute if you want to have object conversions.
+* Array conversions are only done on empty values. Everything else will fail. If you want to convert a value to an array, please create a hydration attribute.
+* For simplicity, conversions are also skipped if the data type of the property is some sort of object. That opens too many cans of worms to deal with. You'll need to make your own custom Hydration attribute if you want to populate object properties.
 
 #### Attributes
 These hook into the assignment process and use the incoming value to perform an action. This is so you can accept one value and assign a different one. This has some extreme potential because of that. For example, you can easily set up a custom attribute to take an ID, run a query or use a mapper, populate a different object, then assign that to the property instead of that simple ID.
@@ -100,8 +98,13 @@ These are special attributes that can be used on properties to alter the behavio
 **Normal Attributes**
 * `#[FileUpload]` - Specify if a property was an upload(s) and automatically pull the data from $_FILES.
 	* **Optional Parameter:** `formatted_uploads: bool` [default: true] - This will format PHPs' gross looking multi-uploads array into an array for each uploaded file as an element with the format of a single upload.
-	* **Property Data Type Restriction:** Arrays only.
-	* **Future Feature:** Eventually this will detect if the field is an object instead of an array and then try to hydrate the object with the files data. There will also be an optional parameter which will take a class and make an array of those if it is a multi upload. 
+	* **Property Data Type Restriction:** Array compatible fields only.
+	* **Future Feature:** Eventually this will detect if the field is an object instead of an array and then try to hydrate the object with the files data. There will also be an optional parameter which will take a class and make an array of those if it is a multi upload.
+* `#[JsonDecode]` - Exactly what PHP's `json_decode` does. Takes a JSON string and tries to convert it to an array. The optional constructor arguments match PHP's method as well.
+	* **Optional Parameter:** `associative: bool|null` [default: null] - Determines if the value should be parsed as an associative array or not.
+	* **Optional Parameter:** `depth: int` [default: 512] - Specified recursion depth.
+	* **Optional Parameter:** `flags: int` [default: 0] - Bit mask of JSON decode options.
+	* **Property Data Type Restriction:** Array compatible fields only.
 * `#[Required]` - This will throw an exception if the property doesn't have a matching key in the incoming array. Basically is just an `isset`.
 
 #### Attribute Properties

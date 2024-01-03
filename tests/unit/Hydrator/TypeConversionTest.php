@@ -387,84 +387,41 @@ class TypeConversionTest extends TestCase
 	/**
 	 * Arrays
 	 */
-	/**
-	 * @dataProvider arrayDataProvider
-	 */
-	public function testArrayConversion(string $test_name, string $str_input, array $expected)
+	public function testEmptyArrayConversionSuccess()
 	{
+		$hydrate_data = [
+			'field1' => '',
+			'field2' => null,
+		];
+
 		$Obj = new class()
 		{
-			public array $array;
+			public array $field1;
+			public array $field2;
 		};
 
-		$Obj = (new ObjectHydrator($Obj))->hydrate([ 'array' => $str_input ])->getObject();
+		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
 
-		$this->assertSame($expected, $Obj->array, $test_name);
-	}
-
-	public function testArrayToArrayConversion()
-	{
-		$Obj = new class()
-		{
-			public array $array;
-		};
-
-		$Obj = (new ObjectHydrator($Obj))->hydrate([ 'array' => [ 1, 2, 3 ] ])->getObject();
-
-		$this->assertSame([ 1, 2, 3 ], $Obj->array);
+		$this->assertSame([], $Obj->field1);
+		$this->assertSame([], $Obj->field2);
 	}
 
 	public function testArrayConversionFail()
 	{
+		$hydrate_data = [
+			'field1' => 'not empty',
+		];
+
 		$Obj = new class()
 		{
-			public array $array;
+			public array $field1;
 		};
 
 		$this->expectException(ConversionException::class);
-		$this->expectExceptionMessage('Failed to convert string to array');
+		$this->expectExceptionMessage('Failed to convert string to array.');
 
-		$Obj = (new ObjectHydrator($Obj))->hydrate([ 'array' => '{bad json}' ])->getObject();
+		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
 
-		$this->fail('This was supposed to fail.');
-	}
-
-	public static function arrayDataProvider()
-	{
-		return [
-			[
-				'json',
-				'{"A":"1","B":2}',
-				[ 'A' => '1', 'B' => 2 ],
-			],
-			[
-				'json extra',
-				'{"A": { "C": "d"} ,"B": [ 1, 2, 3 ]}',
-				[ 'A' => [ 'C' => 'd' ], 'B' => [ 1, 2, 3 ] ],
-			],
-			[
-				'empty',
-				'',
-				[],
-			],
-			[
-				'comma delimited int',
-				'1,2,3',
-				[ '1', '2', '3' ]
-			],
-			[
-				'comma delimited mixed',
-				'1,a,3',
-				[ '1', 'a', '3' ]
-			],
-			[
-				'comma delimited multi-line',
-<<<TEXT
-1,a,3
-4,v,u
-TEXT,
-				[ ['1', 'a', '3'], [ '4', 'v', 'u' ] ]
-			],
-		];
+		$this->fail();
 	}
 }

@@ -14,7 +14,7 @@ class TypeConverter
 		'integer' => 'convertToInt',
 		'float'   => 'convertToFloat',
 		'double'  => 'convertToFloat',
-		'array'   => 'convertToArray',
+		'array'   => 'convertToEmptyArray', // Only empty value conversion. Everything else needs to use Hydration Attributes like the provided JsonDecode.
 		'null'    => 'convertToMixed',
 		'mixed'   => 'convertToMixed',
 		// No Object Conversion
@@ -172,59 +172,25 @@ class TypeConverter
 	}
 
 	/**
-	 * Convert a string represented array to an actual array
+	 * Convert an empty value to an empty array.
+	 *
+	 * Empty values only. Everything else will fail.
 	 *
 	 * @param mixed $value    The value to convert.
 	 * @param array $metadata Any optional data that might be needed.
 	 * @return array
 	 */
-	public static function convertToArray(mixed $value, array $metadata=[]): array
+	public static function convertToEmptyArray(mixed $value, array $metadata=[]): array
 	{
-		if (empty($value))
+		($metadata);
+		$new_value = $value ?: [];
+
+		if (!is_array($new_value))
 		{
-			return [];
+			throw new ConversionException('Failed to convert '.gettype($value).' to array.');
 		}
 
-		($metadata); // For removing the unused warning.
-
-		if (is_string($value))
-		{
-			// Check for json
-			$json_value = json_decode($value, true);
-			if (json_last_error() === JSON_ERROR_NONE && !empty($json_value))
-			{
-				$value = $json_value;
-				return $value;
-			}
-
-			// check for comma delimited string
-			if (substr_count($value, ',') > 0)
-			{
-				$lines     = explode(PHP_EOL, $value);
-				$csv_value = [];
-
-				if (count($lines) === 1)
-				{
-					$csv_value = str_getcsv($lines[0]);
-				}
-				else
-				{
-					foreach ($lines as $line)
-					{
-						$csv_value[] = str_getcsv($line);
-					}
-				}
-
-				$value = $csv_value;
-				return $value;
-			}
-		}
-
-		if (!is_array($value))
-		{
-			throw new ConversionException('Failed to convert '.gettype($value).' to array');
-		}
-
+		$value = $new_value;
 		return $value;
 	}
 }

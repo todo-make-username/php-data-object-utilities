@@ -24,8 +24,6 @@ class BasicDataTypesObj implements ObjInterface
 	#[ConversionSettings(strict: false)]
 	public bool $val_bool_truthy;
 
-	public array $val_array;
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -40,7 +38,6 @@ class BasicDataTypesObj implements ObjInterface
 			'bool'          => $this->val_bool,
 			'bool dropdown' => $this->val_bool_dropdown,
 			'bool truthy'   => $this->val_bool_truthy,
-			'array'         => $this->val_array,
 		];
 	}
 }
