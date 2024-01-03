@@ -82,7 +82,7 @@ When hydrating an object, the data that is passed in is not always the type you 
 **Conversion Notes:**
 * Bools use PHP's `filter_var` to convert common bool strings. When used with a default value, checkbox values in forms becomes very simple to manage.
 * Array conversions are only done on empty values. Everything else will fail. If you want to convert a value to an array, please create a hydration attribute.
-* For simplicity, conversions are also skipped if the data type of the property is some sort of object. That opens too many cans of worms to deal with. You'll need to make your own custom Hydration attribute if you want to populate object properties.
+* For simplicity, conversions are skipped if the data type of the property is some sort of object. That opens too many cans of worms to deal with. You'll need to make your own custom Hydration attribute if you want to populate object properties.
 
 #### Attributes
 These hook into the assignment process and use the incoming value to perform an action. This is so you can accept one value and assign a different one. This has some extreme potential because of that. For example, you can easily set up a custom attribute to take an ID, run a query or use a mapper, populate a different object, then assign that to the property instead of that simple ID.
@@ -90,16 +90,17 @@ These hook into the assignment process and use the incoming value to perform an 
 **Setting Attributes**\
 These are special attributes that can be used on properties to alter the behavior of the hydrator.
 * `#[HydratorSettings()]` - This is the settings attribute that is used to enable or disable certain aspects of the hydrator for the property.
-	* **Optional Parameter:** `hydrate: bool` [default: true] - This enables/disables hydration completely for the property. Conversion will not run if this is disabled for obvious reasons.
-	* **Optional Parameter:** `convert: bool` [default: true] - This enables/disables the type conversions. Without this, you will probably get exceptions/errors for mismatched types if strict typing is used.
+	* **Optional Parameter:** `hydrate: bool` [default: true] - This enables/disables hydration completely for the property. Type conversions will not run if this is disabled for obvious reasons.
+	* **Optional Parameter:** `convert: bool` [default: true] - This enables/disables the type conversions. If set to false, you will probably get exceptions/errors for mismatched types if strict typing is used.
 * `#[ConversionSettings()]` - This attribute is used to set certain settings that are used within conversion process. Please use Hydrator settings to disable conversions for the property if desired.
 	* **Optional Parameter:** `strict: bool` [default: true] - This setting is to enable or disable strict conversions. For most types using strict conversion, the value before must loosely match the value after: `'123' == 123` (str to int). When it doesn't match, a `ConversionException` is thrown. When strict conversion is off, it will attempt to convert like it normally does, but doesn't check for loose equivalence afterwards. So `'123abc'` will convert, without errors, to `123`. For bool values, it will use the truthy value if `filter_var` fails to convert.
 
 **Normal Attributes**
 * `#[FileUpload]` - Specify if a property was an upload(s) and automatically pull the data from $_FILES.
-	* **Optional Parameter:** `formatted_uploads: bool` [default: true] - This will format PHPs' gross looking multi-uploads array into an array for each uploaded file as an element with the format of a single upload.
+	* **Optional Parameter:** `formatted_uploads: bool` [default: true] - This will format PHP's gross looking multi-uploads array into an array for each uploaded file as an element with the format of a single upload.\
+	<code>[ [file1 data], [file2 data] ]</code>
 	* **Property Data Type Restriction:** Array compatible fields only.
-	* **Future Feature:** Eventually this will detect if the field is an object instead of an array and then try to hydrate the object with the files data. There will also be an optional parameter which will take a class and make an array of those if it is a multi upload.
+	* **Special Note:** This will remain an array exclusive because everyone has a different file data class which are all initialized differently. If you want to use your own file data class, ignore this attribute and make a custom hydration attribute which has the logic to set up your desired object.
 * `#[JsonDecode]` - Exactly what PHP's `json_decode` does. Takes a JSON string and tries to convert it to an array. The optional constructor arguments match PHP's method as well.
 	* **Optional Parameter:** `associative: bool|null` [default: null] - Determines if the value should be parsed as an associative array or not.
 	* **Optional Parameter:** `depth: int` [default: 512] - Specified recursion depth.
@@ -147,9 +148,9 @@ These are set when the specific Attribute class is initialized. They can be used
 
 
 ### The Validator
-This helper validates the data in an objects public properties and returns `true` if it is all valid. The validation runs on each parameter that has a validation attribute. All failure messages are kept in an array and can be retrieved with the method `getMessages()`.
+This helper validates the data in an objects public properties and returns `true` if it is all valid. The validation runs on each parameter that has one or more validation attributes. All failure messages are kept in an array and can be retrieved with the method `getMessages()`.
 
-There is an optional, but recommended, attribute for you to use to customize the validation failure messages for validation attribute. This is explained below.
+There is an optional, but recommended, attribute for you to use to customize the validation failure messages for validation attribute. This is explained below in the **Custom Failure Messages** section.
 
 #### Basic Usage:
 ```PHP
