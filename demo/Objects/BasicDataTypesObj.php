@@ -2,7 +2,7 @@
 
 namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Attributes\Converter\Conversion;
+use TodoMakeUsername\ObjectHelpers\Attributes\Converter\ConversionSettings;
 
 class BasicDataTypesObj implements ObjInterface
 {
@@ -10,7 +10,7 @@ class BasicDataTypesObj implements ObjInterface
 
 	public int $val_int;
 
-	#[Conversion(strict: false)]
+	#[ConversionSettings(strict: false)]
 	public int $val_int_loose;
 
 	public float $val_float;
@@ -21,7 +21,7 @@ class BasicDataTypesObj implements ObjInterface
 
 	public bool $val_bool_dropdown;
 
-	#[Conversion(strict: false)]
+	#[ConversionSettings(strict: false)]
 	public bool $val_bool_truthy;
 
 	public array $val_array;

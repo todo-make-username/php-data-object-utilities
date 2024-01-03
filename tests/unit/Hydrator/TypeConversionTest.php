@@ -1,12 +1,31 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Converter\Conversion;
+use TodoMakeUsername\ObjectHelpers\Attributes\Converter\ConversionSettings;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\HydratorSettings;
 use TodoMakeUsername\ObjectHelpers\Converter\ConversionException;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 
 class TypeConversionTest extends TestCase
 {
+	public function testNoConvertFailure()
+	{
+		$hydrate_data = [
+			'from_int'    => 321,
+		];
+
+		$Obj = new class()
+		{
+			#[HydratorSettings(convert: false)]
+			public string $from_int;
+		};
+
+		$this->expectException(TypeError::class);
+		$this->expectExceptionMessage('Cannot assign int to property class@anonymous::$from_int of type string');
+
+		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
+	}
+
 	/**
 	 * Int
 	 */
@@ -66,7 +85,7 @@ class TypeConversionTest extends TestCase
 
 		$Obj = new class()
 		{
-			#[Conversion(strict: false)]
+			#[ConversionSettings(strict: false)]
 			public int $from_string;
 		};
 
@@ -178,7 +197,7 @@ class TypeConversionTest extends TestCase
 
 		$Obj = new class()
 		{
-			#[Conversion(strict: false)]
+			#[ConversionSettings(strict: false)]
 			public bool $from_string;
 		};
 
@@ -246,7 +265,7 @@ class TypeConversionTest extends TestCase
 
 		$Obj = new class()
 		{
-			#[Conversion(strict: false)]
+			#[ConversionSettings(strict: false)]
 			public float $from_string;
 		};
 

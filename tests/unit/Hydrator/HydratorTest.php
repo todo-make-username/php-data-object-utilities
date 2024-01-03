@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\HydratorSettings;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 
-class HydrationTest extends TestCase
+class HydratorTest extends TestCase
 {
 	public function testBasicHydration()
 	{
@@ -92,6 +93,27 @@ class HydrationTest extends TestCase
 		$Obj = $Hydrator->setObject($Obj)->hydrate([])->getObject();
 
 		$this->assertSame(null, $Obj);
+	}
+
+	public function testHydrationSettings()
+	{
+		$hydrate_data = [
+			'field1' => 'new value 1',
+			'field2' => 'new value 2',
+		];
+
+		$Obj = new class()
+		{
+			#[HydratorSettings(hydrate: true)]
+			public $field1 = 'old value 1';
+
+			#[HydratorSettings(hydrate: false)]
+			public $field2 = 'old value 2';
+		};
+		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
+
+		$this->assertSame($hydrate_data['field1'], $Obj->field1);
+		$this->assertSame('old value 2', $Obj->field2);
 	}
 
 }

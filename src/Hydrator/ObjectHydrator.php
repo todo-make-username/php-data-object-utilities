@@ -7,8 +7,9 @@ use ReflectionClass;
 use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Converter\TypeConverter;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Attributes\Converter\Conversion;
+use TodoMakeUsername\ObjectHelpers\Attributes\Converter\ConversionSettings;
 use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\AbstractHydratorAttribute;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\HydratorSettings;
 use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
 
 class ObjectHydrator implements ObjectHelperInterface
@@ -105,6 +106,14 @@ class ObjectHydrator implements ObjectHelperInterface
 			'is_set'   => $is_set,
 		];
 
+		$HydrationSettings = $this->getHydrationSettingsAttribute($Property);
+
+		// Skip Hydrating if hydration is set to false.
+		if (!$HydrationSettings->hydrate)
+		{
+			return true;
+		}
+
 		// We don't recursively hydrate attributes on attributes from this project to avoid an infinite loop.
 		// There shouldn't be any attributes on attribute properties, but just in case.
 		if (!($Object instanceof ObjectHelperAttributeInterface))
@@ -118,8 +127,13 @@ class ObjectHydrator implements ObjectHelperInterface
 			return true;
 		}
 
-		$property_type = $Property->getType()?->getName() ?? 'null';
-		$value         = $this->convertValueToType($value, $property_type, $metadata);
+		if ($HydrationSettings->convert)
+		{
+			$ConversionAttribute = $this->getConversionSettingsAttribute($Property);
+			$metadata['strict']  = $ConversionAttribute->strict;
+			$property_type       = $Property->getType()?->getName() ?? 'null';
+			$value               = $this->convertValueToType($value, $property_type, $metadata);
+		}
 
 		$Object->{$property_name} = $value;
 
@@ -163,10 +177,34 @@ class ObjectHydrator implements ObjectHelperInterface
 	{
 		$type = strtolower($type);
 
-		$ConversionAttributes = $metadata['Property']?->getAttributes(Conversion::class, ReflectionAttribute::IS_INSTANCEOF) ?? [];
-		$ConversionAttribute  = (count($ConversionAttributes) > 0) ? $ConversionAttributes[0]->newInstance() : (new Conversion());
-		$metadata['strict']   = $ConversionAttribute->strict;
-
 		return TypeConverter::convertTo($value, $type, $metadata);
+	}
+
+	/**
+	 * Get the conversion settings attribute.
+	 *
+	 * @param ReflectionProperty $Property The property to get the settings for.
+	 * @return Conversion
+	 */
+	protected function getConversionSettingsAttribute(ReflectionProperty $Property): ConversionSettings
+	{
+		$ConversionAttributes = $Property->getAttributes(ConversionSettings::class, ReflectionAttribute::IS_INSTANCEOF) ?? [];
+		$ConversionAttribute  = (count($ConversionAttributes) > 0) ? $ConversionAttributes[0]->newInstance() : (new ConversionSettings());
+
+		return $ConversionAttribute;
+	}
+
+	/**
+	 * Get the hydration settings attribute.
+	 *
+	 * @param ReflectionProperty $Property The property to get the settings for.
+	 * @return Hydrate
+	 */
+	protected function getHydrationSettingsAttribute(ReflectionProperty $Property): HydratorSettings
+	{
+		$HydrationAttributes = $Property->getAttributes(HydratorSettings::class, ReflectionAttribute::IS_INSTANCEOF) ?? [];
+		$HydrationAttribute  = (count($HydrationAttributes) > 0) ? $HydrationAttributes[0]->newInstance() : (new HydratorSettings());
+
+		return $HydrationAttribute;
 	}
 }
