@@ -216,17 +216,17 @@ http://localhost:8000/
 ## Contributing
 **100% Code Coverage ALWAYS!**
 
-I don't normally accept PRs unless they are really important, but I gladly welcome feedback and suggestions via Github Issues. I thrive on constructive criticism.
+I gladly welcome feedback and suggestions via Github Issues. I thrive on constructive feedback.
 
 Bugs of course are submitted via Github Issues as well.
 
 #### Adding New Attributes
-When it comes to adding in new attributes into this library, basically just ask yourself: `Would this is useful for everyone? Or just myself?`.\
+When it comes to adding/requesting new attributes into this library, basically just ask yourself: `Would this is useful for everyone? Or just myself?`.\
 For attributes that are for specific frameworks, they will not be added in here. I recommend creating an attribute library and importing those into your project along with this project.
 
 #### Code Styling Basics
-* curly braces `{ }` start on new lines. Its not my go to, but it is cleaner to look at.
-* run `composer beautify` before staging your commits.
+* Curly braces `{ }` start on new lines. It is not my go to, but it is cleaner to look at.
+* Run `composer beautify` before staging your commits.
 * Classes are PascalCase.
 * Methods are camelCase.
 * Variables that hold objects use PascalCase, otherwise they use snake_case.
