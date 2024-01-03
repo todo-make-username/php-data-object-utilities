@@ -61,7 +61,7 @@ This library is fairly simple, it contains three object helpers and one wrapper 
 * These helpers can be used together or separate. There is no requirement that they must be used together. Unless you use the wrapper of course.
 * Using objects with the `__toString()` method is not fully tested, but should work in most places that a string works in.
 * Fun Fact: I use the hydrator in all the helpers to hydrate the attribute objects. That is why the abstract attribute classes have public properties.
-* Sad Fact: This library does not work with readonly properties as those can only be set from within the object itself and cannot be changed once set.
+* Sad Fact: This library cannot work with readonly properties as those can only be set from within the object itself and cannot be changed once set.
 
 Now, on to the actual docs...
 
@@ -80,7 +80,6 @@ $HydratedObj = (new ObjectHydrator($Obj))->hydrate($_POST)->getObject();
 When hydrating an object, the data that is passed in is not always the type you need. So I will try and convert it for you behind the scenes.
 
 **Conversion Notes:**
-* There is an optional conversion attribute `#[Conversion(strict: bool)]` available for you to use. It is used for disabling strict conversions (which is on by default). For most types the value before must loosely match the value after: `'123' == 123` (str to int). When it doesn't, a `ConversionException` is thrown. When strict is off, it will attempt to convert like it normally does, but doesn't check for loose equivalence afterwards. So `'123abc'` will convert, without errors, to `123`. For bool values, it will use the truthy value if `filter_var` fails to convert.
 * Bools use PHP's `filter_var` to convert common bool strings. When used with a default value, checkbox values in forms becomes very simple to manage.
 * Arrays can be converted from string. I know, I'm so helpful. Any string that can be parsed from json will be converted to an array. In addition, if that fails, it will attempt to convert from csv. This can lead to weird things if it was not supposed to be converted from csv.
 	* **Probable Future Feature:** This might stop being an automatic conversion and will require a hydration attribute instead, but for now, it is automatic cause I like it.
@@ -90,6 +89,15 @@ When hydrating an object, the data that is passed in is not always the type you 
 #### Attributes
 These hook into the assignment process and use the incoming value to perform an action. This is so you can accept one value and assign a different one. This has some extreme potential because of that. For example, you can easily set up a custom attribute to take an ID, run a query or use a mapper, populate a different object, then assign that to the property instead of that simple ID.
 
+**Setting Attributes**\
+These are special attributes that can be used on properties to alter the behavior of the hydrator.
+* `#[HydratorSettings()]` - This is the settings attribute that is used to enable or disable certain aspects of the hydrator for the property.
+	* **Optional Parameter:** `hydrate: bool` [default: true] - This enables/disables hydration completely for the property. Conversion will not run if this is disabled for obvious reasons.
+	* **Optional Parameter:** `convert: bool` [default: true] - This enables/disables the type conversions. Without this, you will probably get exceptions/errors for mismatched types if strict typing is used.
+* `#[ConversionSettings()]` - This attribute is used to set certain settings that are used within conversion process. Please use Hydrator settings to disable conversions for the property if desired.
+	* **Optional Parameter:** `strict: bool` [default: true] - This setting is to enable or disable strict conversions. For most types using strict conversion, the value before must loosely match the value after: `'123' == 123` (str to int). When it doesn't match, a `ConversionException` is thrown. When strict conversion is off, it will attempt to convert like it normally does, but doesn't check for loose equivalence afterwards. So `'123abc'` will convert, without errors, to `123`. For bool values, it will use the truthy value if `filter_var` fails to convert.
+
+**Normal Attributes**
 * `#[FileUpload]` - Specify if a property was an upload(s) and automatically pull the data from $_FILES.
 	* **Optional Parameter:** `formatted_uploads: bool` [default: true] - This will format PHPs' gross looking multi-uploads array into an array for each uploaded file as an element with the format of a single upload.
 	* **Property Data Type Restriction:** Arrays only.
