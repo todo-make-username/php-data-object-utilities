@@ -28,12 +28,12 @@ class StrReplace extends AbstractTailorAttribute
 	 */
 	public function process(mixed $value): mixed
 	{
-		if (!is_string($value))
+		if (!is_string($value) && !is_array($value))
 		{
 			return $value;
 		}
 
-		$value = str_replace($this->search, $this->replace, strval($value));
+		$value = str_replace($this->search, $this->replace, $value);
 
 		return $value;
 	}

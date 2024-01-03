@@ -129,8 +129,7 @@ $TailoredObj = (new ObjectTailor($Obj))->tailor()->getObject();
 When placed on an object's property, they will alter the value currently in it.
 
 * `#[StrReplace(search: string|array, replace: string|array)]` - This behaves exactly like PHP's `str_replace`.
-	* **Property Data Type Restriction:** String only.
-		* **Future Feature:** Might open it up for arrays at a later date to match PHP's str_replace method.
+	* **Property Data Type Restriction:** String and Array only. Those are the types that work in PHP's `str_replace`.
 * `#[Trim]` - That's what we all want this library for, now you got it. With the Trim attribute, any data in that property is trimmed.
 	* **Property Data Type Restriction:** String only.
 	* **Optional Parameter:** `characters: string` - The characters is the same param that is passed to PHP's `trim` function.

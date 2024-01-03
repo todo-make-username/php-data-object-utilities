@@ -47,4 +47,25 @@ class StrReplaceAttributeTest extends TestCase
 
 		$this->assertSame(123, $Obj->field1);
 	}
+
+	public function testStrReplaceArrayMultiple()
+	{
+		$Obj = new class()
+		{
+			#[StrReplace([ 'R1', 'R2', '?' ], [ 'Hello', 'World', '!'])]
+			public $field1 = ['R1 R2?', 'R1', 'R2', '?'];
+		};
+
+		$expected = [
+			'Hello World!',
+			'Hello',
+			'World',
+			'!',
+		];
+
+		$Tailor = new ObjectTailor($Obj);
+		$Obj    = $Tailor->tailor()->getObject();
+
+		$this->assertSame($expected, $Obj->field1);
+	}
 }
