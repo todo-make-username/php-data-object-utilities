@@ -14,7 +14,7 @@ class ValidatorHelperObj implements ObjInterface
 
 	#[Trim]
 	#[NotEmpty]
-	public string $trimmed_not_empty;
+	public string $trimmed_not_empty = '';
 
 	#[RegexMatch(pattern: '/^\d+[A-Za-z]+$/')]
 	public string $pattern;
@@ -29,10 +29,10 @@ class ValidatorHelperObj implements ObjInterface
 	public function toArray(): array
 	{
 		return [
-			'not_empty'         => $this->not_empty ?? null,
-			'trimmed_not_empty' => $this->trimmed_not_empty ?? null,
-			'pattern'           => $this->pattern ?? null,
-			'custom_message'    => $this->custom_message ?? null,
+			'not_empty'         => $this->not_empty,
+			'trimmed_not_empty' => $this->trimmed_not_empty,
+			'pattern'           => $this->pattern,
+			'custom_message'    => $this->custom_message,
 		];
 	}
 }

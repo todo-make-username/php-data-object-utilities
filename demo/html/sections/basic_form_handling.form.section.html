@@ -1,9 +1,11 @@
 <div class="pure-g">
 	<div class="pure-u-1">
 		<h3>Description:</h3>
-		<p>This is an example of auto conversion is used during hydration. By default, all conversions are strict, meaning the value before must loosely match the value after <code>'123' == 123</code>.</p>
-		<p>An optional <code>Conversion</code> attribute can be set on a property to allow loose conversions. An example can be seen below.</p>
+		<p>These are some examples of various ways of hydrating an object from form values.</p>
 		<p>Bools are where this gets fun as PHP has smart conversions for it. yes/no, 1/0, 'true'/'false' all cleanly convert to boolean. Setting the strict flag to false on a bool field will allow truthy/falsey values. For everyone's sanity, values that are set but empty are not affected by the strict flag and are simply converted to false.</p>
+		<p>It is highly recommended to set a default value for any inputs that don't always get sent over, like checkboxes. Otherwise PHP might start yelling at you about accessing uninitialized properties.</p>
+		<p>An optional <code>ConversionSettings</code> attribute can be set on a property to allow loose conversions. An example can be seen below.</p>
+		<p>By default, all conversions are strict, meaning the value before must loosely match the value after <code>'123' == 123</code>.</p>
 	</div>
 </div>
 <div class="pure-g">
@@ -27,7 +29,7 @@
 		<div class="pure-control-group">
 			<label>
 				Int (not strict):<br>
-				<small>#[Conversion(strict: false)]</small>
+				<small>#[ConversionSettings(strict: false)]</small>
 			</label>
 			<input type="text" class="form-control" name="val_int_loose" value="123abc">
 		</div>
@@ -47,7 +49,7 @@
 				Bool:<br>
 				<small>With backend default 'false'</small>
 			</label>
-			<input type="checkbox" class="form-check-input" name="val_bool" value="yes">
+			<input type="checkbox" class="form-check-input" name="val_bool">
 		</div>
 
 		<div class="pure-control-group">
@@ -63,9 +65,45 @@
 		<div class="pure-control-group">
 			<label>
 				Bool Truthy:<br>
-				<small>#[Conversion(strict: false)]</small>
+				<small>#[ConversionSettings(strict: false)]</small>
 			</label>
 			<input type="text" class="form-control" name="val_bool_truthy" value="any text means true">
+		</div>
+
+		<div class="pure-control-group">
+			<label>Multi Select \w Values:<br><small>Array</small></label>
+			<select name="multiselect[]" multiple>
+				<option value="1">Val 1</option>
+				<option value="2">Val 2</option>
+				<option value="3">Val 3</option>
+				<option value="4">Val 4</option>
+			</select>
+		</div>
+
+		<div class="pure-control-group">
+			<label>Checkbox Multiple:<br><small>Array</small></label>
+			<br>
+			<label>A</label>
+			<input class="form-check-input2" type="checkbox" name="multi_checkbox[]" value="A">
+			<br>
+			<label>B</label>
+			<input class="form-check-input2" type="checkbox" name="multi_checkbox[]" value="B">
+			<br>
+			<label>C</label>
+			<input class="form-check-input2" type="checkbox" name="multi_checkbox[]" value="C">
+		</div>
+
+		<div class="pure-control-group">
+			<label>Radio:<br><small>String</small></label>
+			<br>
+			<label>X</label>
+			<input type="radio" name="radio" value="X" checked>
+			<br>
+			<label>Y</label>
+			<input type="radio" name="radio" value="Y">
+			<br>
+			<label>Z</label>
+			<input type="radio" name="radio" value="Z">
 		</div>
 	</div>
 </div>

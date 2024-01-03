@@ -1,9 +1,6 @@
 <?php declare(strict_types=1);
 
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 use TodoMakeUsername\ObjectHelpers\ObjectHelper;
-use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
 use TodoMakeUsername\ObjectHelpersDemo\Util\ObjectFactory;
 
 $Obj            = ObjectFactory::create($_POST['section']);

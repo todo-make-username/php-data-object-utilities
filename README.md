@@ -58,7 +58,7 @@ This library is fairly simple, it contains three object helpers and one wrapper 
 * Each helper only looks at an object's public properties are looked at.
 	* Yes, I can technically also do the private/protected properties using reflection. It wont happen because that breaks the whole purpose behind private/protected. That said, if there is a use case that would be deemed essential to have that feature, I can look into opening that up. It better be a good reason though.
 * For attribute arguments, use named parameters. It makes things easier for everyone. You can do it the old way if you want, but I recommend using named parameters where you can for self documenting code.
-* These helpers can be used together or separate. There is no requirement that they must be used together. Unless you use the wrapper of course.
+* When using this library to handle form submissions, it is highly recommended to have default values for any property that has form data that may not be sent over. Like checkboxes. Otherwise PHP might start yelling at you about accessing uninitialized properties.
 * Hydrating properties which can be converted from a string can be hydrated with an object as long as the `__toString()` magic method is set up.
 * Fun Fact: I use the hydrator in all the helpers to hydrate the attribute objects. That is why the abstract attribute classes have public properties.
 * Sad Fact: This library cannot work with readonly properties as those can only be set from within the object itself and cannot be changed once set.
