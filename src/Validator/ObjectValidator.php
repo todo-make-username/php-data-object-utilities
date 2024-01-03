@@ -6,10 +6,10 @@ use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\AbstractValidatorAttribute;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
+use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\AbstractValidatorAttribute;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
 
 /**
  * This class uses attributes to validate properties. No values are altered.

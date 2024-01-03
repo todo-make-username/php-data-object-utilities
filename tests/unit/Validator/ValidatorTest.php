@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
 
 /**

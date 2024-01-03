@@ -2,9 +2,9 @@
 
 use PHPUnit\Framework\TestCase;
 use TodoMakeUsername\ObjectHelpers\ObjectHelper;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
 
 /**
  * This uses notEmpty and trim to test since they are simple.

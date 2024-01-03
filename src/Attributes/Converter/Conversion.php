@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Converter\Attributes;
+namespace TodoMakeUsername\ObjectHelpers\Attributes\Converter;
 
 use Attribute;
+use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Conversion
+class Conversion implements ObjectHelperAttributeInterface
 {
 	/**
 	 * Set the type conversion settings

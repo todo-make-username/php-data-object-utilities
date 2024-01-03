@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\FileUpload;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\FileUpload;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 
 class FileUploadAttributeTest extends TestCase

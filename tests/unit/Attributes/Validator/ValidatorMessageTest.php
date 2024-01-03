@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorFailureException;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
 use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;

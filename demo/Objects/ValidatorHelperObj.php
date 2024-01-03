@@ -2,10 +2,10 @@
 
 namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\RegexMatch;
-use TodoMakeUsername\ObjectHelpers\Validator\Attributes\ValidatorMessage;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\RegexMatch;
+use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
 
 class ValidatorHelperObj implements ObjInterface
 {

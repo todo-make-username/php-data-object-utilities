@@ -2,9 +2,9 @@
 
 namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\StrReplace;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\UseDefaultOnEmpty;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\StrReplace;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\UseDefaultOnEmpty;
 
 class TailorHelperObj implements ObjInterface
 {

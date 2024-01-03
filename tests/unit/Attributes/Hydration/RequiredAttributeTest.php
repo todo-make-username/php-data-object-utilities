@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\Required;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\Required;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 

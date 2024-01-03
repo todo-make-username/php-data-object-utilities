@@ -2,7 +2,7 @@
 
 namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Converter\Attributes\Conversion;
+use TodoMakeUsername\ObjectHelpers\Attributes\Converter\Conversion;
 
 class BasicDataTypesObj implements ObjInterface
 {

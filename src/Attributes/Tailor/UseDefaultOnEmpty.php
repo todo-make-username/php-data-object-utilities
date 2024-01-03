@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
+namespace TodoMakeUsername\ObjectHelpers\Attributes\Tailor;
 
 use Attribute;
 use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailoringException;

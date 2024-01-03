@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Converter\Attributes\Conversion;
+use TodoMakeUsername\ObjectHelpers\Attributes\Converter\Conversion;
 use TodoMakeUsername\ObjectHelpers\Converter\ConversionException;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
 

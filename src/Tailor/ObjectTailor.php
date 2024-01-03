@@ -5,10 +5,10 @@ namespace TodoMakeUsername\ObjectHelpers\Tailor;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
+use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\AbstractTailorAttribute;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\AbstractTailorAttribute;
 
 /**
  * This class uses property attributes to alter (tailor) the data stored in public properties.
@@ -112,7 +112,7 @@ class ObjectTailor implements ObjectHelperInterface
 			$value = $this->processTailorAttributes($Property, $initial_value, $metadata);
 		}
 
-		// This is here so we don't overwrite unitialized properties.
+		// This is here so we don't overwrite uninitialized properties.
 		if ($initial_value === $value)
 		{
 			return true;

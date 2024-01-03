@@ -2,8 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\UseDefaultOnEmpty;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\UseDefaultOnEmpty;
 use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
 use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailoringException;
 

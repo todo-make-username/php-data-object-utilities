@@ -2,7 +2,7 @@
 
 namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\Required;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\Required;
 
 class RequiredObj implements ObjInterface
 {

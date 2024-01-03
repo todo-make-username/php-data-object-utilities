@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Tailor\Attributes\Trim;
+use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
 use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
 
 class TrimAttributeTest extends TestCase

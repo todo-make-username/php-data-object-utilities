@@ -5,11 +5,11 @@ namespace TodoMakeUsername\ObjectHelpers\Hydrator;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Converter\Attributes\Conversion;
 use TodoMakeUsername\ObjectHelpers\Converter\TypeConverter;
-use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\AbstractHydratorAttribute;
-use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
 use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
+use TodoMakeUsername\ObjectHelpers\Attributes\Converter\Conversion;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\AbstractHydratorAttribute;
+use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
 
 class ObjectHydrator implements ObjectHelperInterface
 {

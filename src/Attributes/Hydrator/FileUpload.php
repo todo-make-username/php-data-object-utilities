@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Hydrator\Attributes;
+namespace TodoMakeUsername\ObjectHelpers\Attributes\Hydrator;
 
 use Attribute;
 use TodoMakeUsername\ObjectHelpers\Util\FilesHelper;

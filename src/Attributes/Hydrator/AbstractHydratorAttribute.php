@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Hydrator\Attributes;
+namespace TodoMakeUsername\ObjectHelpers\Attributes\Hydrator;
 
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Shared\Attributes\ObjectHelperAttributeInterface;
+use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
 
 /**
  * The interface for all hydration attributes.

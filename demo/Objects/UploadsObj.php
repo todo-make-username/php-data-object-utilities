@@ -2,7 +2,7 @@
 
 namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Hydrator\Attributes\FileUpload;
+use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\FileUpload;
 
 class UploadsObj implements ObjInterface
 {

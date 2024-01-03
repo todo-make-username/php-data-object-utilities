@@ -1,10 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Tailor\Attributes;
+namespace TodoMakeUsername\ObjectHelpers\Attributes\Tailor;
 
 use ReflectionProperty;
+use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
 
-abstract class AbstractTailorAttribute
+abstract class AbstractTailorAttribute implements ObjectHelperAttributeInterface
 {
 	/**
 	 * The reflection object of the property this attribute is on.
