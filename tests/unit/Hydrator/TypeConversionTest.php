@@ -26,6 +26,35 @@ class TypeConversionTest extends TestCase
 		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
 	}
 
+	public function testObjectConversion()
+	{
+		$hydrate_data = [
+			'to_string' => (new class() { public function __toString(){ return 'test'; }}),
+			'to_bool'   => (new class() { public function __toString(){ return 'yes'; }}),
+			'to_int'    => (new class() { public function __toString(){ return '321'; }}),
+		];
+
+		$expected = [
+			'to_string' => 'test',
+			'to_bool'   => true,
+			'to_int'    => 321,
+		];
+
+		$Obj = new class()
+		{
+			public string $to_string;
+			public bool   $to_bool;
+			public int    $to_int;
+		};
+
+		$Obj = (new ObjectHydrator($Obj))->hydrate($hydrate_data)->getObject();
+
+		foreach (array_keys($expected) as $field)
+		{
+			$this->assertSame($expected[$field], $Obj->{$field}, $field);
+		}
+	}
+
 	/**
 	 * Int
 	 */

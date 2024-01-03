@@ -2,6 +2,8 @@
 
 namespace TodoMakeUsername\ObjectHelpers\Converter;
 
+use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
+
 class TypeConverter
 {
 	public static array $type_method_map = [
@@ -21,7 +23,9 @@ class TypeConverter
 	/**
 	 * Convert value to a specific type.
 	 *
-	 * If the desired type is not a basic PHP data type, or is an object, no conversion happens.
+	 * Conversion to these types only: string, boolean, integer, float/double, mixed/no strict type
+	 *
+	 * Objects can be converted if __toString() is implemented. Or at least we can try.
 	 *
 	 * @param mixed  $value    The value to convert.
 	 * @param string $type     The type to convert to.
@@ -32,9 +36,16 @@ class TypeConverter
 	{
 		$method_name = self::$type_method_map[$type] ?? null;
 
+		// Conversion is not supported, simply return the value.
 		if (is_null($method_name))
 		{
 			return $value;
+		}
+
+		// The object can be converted to string via __toString(), so lets do that.
+		if (gettype($value) === 'object' && StringHelper::isStringCompatible($value))
+		{
+			$value = strval($value);
 		}
 
 		return TypeConverter::$method_name($value, $metadata);

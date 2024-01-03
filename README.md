@@ -201,8 +201,8 @@ $NewObj       = $ObjectHelper->getObject();
 
 
 ## How to run the demo
-Make a copy of this project via cli or by downloading. Then run this command in the project root:\
-```SH
+Make a copy of this project via cli or by downloading. Then run this command in the project root to spin up a dev PHP server for the demo:
+```shell
 php -S localhost:8000 demo/index.php
 ```
 
