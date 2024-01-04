@@ -66,7 +66,7 @@ This library is fairly simple, it contains three object helpers and one wrapper 
 
 #### Useful Info:
 * Attributes are run in order from top to bottom.
-* Each helper only looks at an object's public properties are looked at.
+* Each helper only looks at an object's public properties.
 	* Yes, I can technically also do the private/protected properties using reflection. It wont happen because that breaks the whole purpose behind private/protected. That said, if there is a use case that would be deemed essential to have that feature, I can look into opening that up. It better be a good reason though.
 * For attribute arguments, use named parameters. It makes things easier for everyone. You can do it the old way if you want, but I recommend using named parameters where you can for self documenting code.
 * When using this library to handle form submissions, it is highly recommended to have default values for any property that has form data that may not be sent over. Like checkboxes. Otherwise PHP might start yelling at you about accessing uninitialized properties.
