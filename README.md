@@ -221,7 +221,7 @@ I gladly welcome feedback and suggestions via Github Issues. I thrive on constru
 Bugs of course are submitted via Github Issues as well.
 
 #### Adding New Attributes
-When it comes to adding/requesting new attributes into this library, basically just ask yourself: `Would this is useful for everyone? Or just myself?`.\
+When it comes to adding/requesting new attributes into this library, basically just ask yourself: `Would this be useful for everyone? Or just myself?`.\
 For attributes that are for specific frameworks, they will not be added in here. I recommend creating an attribute library and importing those into your project along with this project.
 
 #### Code Styling Basics
