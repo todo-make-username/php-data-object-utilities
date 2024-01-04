@@ -17,9 +17,8 @@ use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
 class ObjectValidator implements ObjectHelperInterface
 {
 	protected ?object $Object;
-	protected bool    $is_valid         = false;
-	protected string  $validation_error = '';
-	protected array   $messages         = [];
+	protected bool    $is_valid = false;
+	protected array   $messages = [];
 
 	/**
 	 * The constructor.
@@ -62,7 +61,7 @@ class ObjectValidator implements ObjectHelperInterface
 	public function getMessage(): string
 	{
 		$number_of_messages = count($this->messages);
-		return ($number_of_messages > 0) ? $this->messages[$number_of_messages - 1] : [];
+		return ($number_of_messages > 0) ? $this->messages[$number_of_messages - 1] : '';
 	}
 
 	/**
@@ -159,7 +158,6 @@ class ObjectValidator implements ObjectHelperInterface
 		$Hydrator             = new ObjectHydrator();
 		$fail_messages_map    = (count($ReflectionAttributes) > 0) ? $this->getCustomValidatorFailureMessages($Property) : [];
 		$property_is_valid    = true;
-		$is_valid             = true;
 
 		foreach ($ReflectionAttributes as $ReflectionAttribute)
 		{

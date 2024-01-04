@@ -184,7 +184,7 @@ class ObjectHydrator implements ObjectHelperInterface
 	 * Get the conversion settings attribute.
 	 *
 	 * @param ReflectionProperty $Property The property to get the settings for.
-	 * @return Conversion
+	 * @return ConversionSettings
 	 */
 	protected function getConversionSettingsAttribute(ReflectionProperty $Property): ConversionSettings
 	{
@@ -198,7 +198,7 @@ class ObjectHydrator implements ObjectHelperInterface
 	 * Get the hydration settings attribute.
 	 *
 	 * @param ReflectionProperty $Property The property to get the settings for.
-	 * @return Hydrate
+	 * @return HydratorSettings
 	 */
 	protected function getHydrationSettingsAttribute(ReflectionProperty $Property): HydratorSettings
 	{
