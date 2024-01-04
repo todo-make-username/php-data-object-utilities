@@ -11,9 +11,9 @@
 [![License][license-shield]][license-url]
 
 # PHP8 Object Helpers
-PHP8 helpers for hydrating and validating objects from arrays using PHP reflection and attributes.
+This library bridges the gap between associative arrays and modern typed objects.
 
-**Message from the Author:** This library is fully functional and stable. It is only in the `alpha` state while I add features. If a feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
+Includes PHP8 helpers for hydrating and validating objects from arrays using PHP reflection and attributes. This automates many repetitive tasks that we all encounter in modern PHP and keeps the logic in easily reusable components (attributes).
 
 [Report Bug](https://github.com/todo-make-username/php-object-helpers/issues)
 ·
@@ -21,18 +21,31 @@ PHP8 helpers for hydrating and validating objects from arrays using PHP reflecti
 
 </div>
 
+## Message from the Author
+This project is fully functional and stable. It is only in the `alpha` state while I add extra attributes. If a feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
+
 ## Why use this?
-This library can be fairly powerful as it automates many repetitive tasks that we all encounter in modern PHP. A lot of major PHP features use associative arrays that may or may not be in the correct data type. ***I'm looking at you $_POST. DB query results are also array centric.***
+This library is designed to increase reusability and eliminate many of the repetitive tasks that comes from working with data in PHP. This is done by moving much of the data processing and data validation logic into reusable PHP8 attributes. The helpers then take the object and process the attributes on each property which removes a lot of the boilerplate code that is normally needed when processing data.
 
-This was from the days of old when everything was an array. In this era of strict typing and cleaner PHP, we have been moving on from our over-reliance of arrays and migrating to more structured data objects with defined properties.
+If you are always working with associative arrays and would like to use properly typed objects instead, this is the library for you.
 
-That is the niche that this project was built for.
+**There are 4 main actions this library was designed to help with:**
+1. Hydrate an object's public properties using an associative array of data.
+	* Hydration attributes can act as chainable setter methods that can use the incoming data to assign the object's property something different.
+	* For example, when the attribute `#[JsonDecode(true)]` is used on a property, it will expect a json string during hydration and then parses it, then return an array instead.
+2. While hydrating an object, the values from the array will be automatically converted to the property's type.
+	* This can be turned off if desired.
+3. Clean up an object's values using altering attributes.
+	* Things like automatically running `trim`, or `str_replace` on a handful of properties only requires you to add the corresponding attribute to the desired properties on the object.
+	* These attributes are called `tailor attributes` in this library.
+4. Validate an object's properties using validation attributes.
+	* For example, you can set up an attribute that checks if the value of a property matches a regex pattern, or that the value must pass an `!empty` check.
 
 #### Common Use Cases:
 * Typing and validating form data.
-* DB Mappers.
+* Simple DB Mappers.
 * APIs.
-* Basically anything that has an array that would be better off as an object.
+* Basically anything that has an array that would be better off as a typed object.
 
 Did I mention that this library is fully extendable? You don't need to use any of my pre-made attributes. You can easily add your own hydration/tailor/validation attributes. As long as they extend my base attribute classes, the helpers will automatically pick up on them.
 
