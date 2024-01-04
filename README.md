@@ -13,7 +13,7 @@
 # PHP8 Object Helpers
 PHP8 helpers for hydrating and validating objects from arrays using PHP reflection and attributes.
 
-**Message from the Author:** This library is fully functional and stable. Is only in the `alpha` state while I add features. If an feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
+**Message from the Author:** This library is fully functional and stable. It is only in the `alpha` state while I add features. If a feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
 
 [Report Bug](https://github.com/todo-make-username/php-object-helpers/issues)
 ·
