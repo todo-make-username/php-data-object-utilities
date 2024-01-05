@@ -22,7 +22,7 @@ Includes PHP8 helpers for hydrating and validating objects from arrays using PHP
 </div>
 
 ## Message from the Author
-This project is fully functional and stable. It is only in the `alpha` state while I add extra attributes. If a feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
+This project is fully functional and stable. It is only in the `alpha` state while I add extra attributes and polish the readme. If a feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
 
 ## Why use this?
 This library is designed to increase reusability and eliminate many of the repetitive tasks that comes from working with data in PHP. This is done by moving much of the data processing and data validation logic into reusable PHP8 attributes. The helpers then take the object and process the attributes on each property which removes a lot of the boilerplate code that is normally needed when processing data.
@@ -60,6 +60,89 @@ Yup, that's it. Since this doesn't do anything fancy and mostly relies on built-
 The dev requirements are just the typical phpunit and code sniffer.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Quick Example of Usage:
+In this example we will look at $_POST data. When it comes to arrays, the data doesn't follow strict guidelines which causes bugs. This library simplifies the validation and data processing for you. Below, you'll see I create an object which has properties that corresponds with the expected $_POST keys. By moving away from arrays and towards data driven objects, we can create cleaner code which produces fewer bugs.
+
+Here is a quick and dirty example of how it can be used on $_POST data after a form submission to prepare the data.
+```PHP
+/**
+ * We will be pretending this is coming from a form for a product review.
+ *
+ * This class has properties that match what we are expecting $_POST to contain.
+ * The exception being the file upload one, which looks at $_FILES instead.
+ */
+class ReviewFormData
+{
+	#[Trim]     // Tailor Attribute
+	#[NotEmpty] // Validation Attribute
+	public string $name;
+
+	// For this example, this is a checkbox, and therefore must have a default value if it is unchecked.
+	public bool $is_public_review = false;
+
+	public int $star_rating;
+
+	#[StrReplace('*cat sitting on spacebar*', '')] // Tailor Attribute
+	#[Trim]                                        // Tailor Attribute
+	#[UseDefaultOnEmpty]                           // Tailor Attribute
+	public ?string $review_text = null;
+
+	// FileUpload is a hydration attribute that pulls the data automatically from the $_FILES array.
+	//		the optional param will format the array into a cleaner format for multi-uploads.
+	#[FileUpload(formatted_uploads: true)] // Hydration Attribute
+	public array $review_image_uploads;
+}
+
+...
+
+// This is the data we got from the form:
+$_POST = [
+	'name' => 'Nonya',
+	'review_text' => 'I liked this product.       *cat sitting on spacebar*             ',
+	'star_rating' => '4',
+	// is_public_review was a checkbox. For this example it was unchecked, and therefore didn't come though.
+];
+
+$_FILES = [
+	'review_image_uploads' => [
+		// This example will say there are 2 files.
+	]
+];
+
+...
+
+// Now somewhere else in the codebase where the form data is processed.
+$FormObject = new ReviewFormData();
+
+// The object's properties were set using the from $_POST and $_FILES. 
+// The values were also converted to the proper types. 
+$FormObject = (new ObjectHydrator($FormObject))->hydrate($_POST)->getObject();
+
+// StrReplace ran on the review_text property.
+// Trim trimmed the designated properties.
+// UseDefaultOnEmpty didn't do anything since that field had a value.
+$FormObject = (new ObjectTailor($FormObject))->tailor()->getObject();
+
+// Validation is run. Any failure messages can be retrieved with getMessages.
+$ObjectValidator  = new ObjectValidator($FormObject);
+$is_valid         = $ObjectValidator->isValid();
+$response_message = ($is_valid)
+						? 'Success'
+						: implode(PHP_EOL, $ObjectValidator->getMessages());
+
+...
+
+// The resulting object property values:
+$FormObject->name                 => 'Nonya'
+$FormObject->is_public_review     => false
+$FormObject->star_rating          => 4
+$FormObject->review_text          => 'I liked this product.'
+$FormObject->review_image_uploads => [ [ `File 1 Data` ], [ `File 2 Data` ] ]
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Documentation
 This library is fairly simple, it contains three object helpers and one wrapper that incorporates all three. It also contains some pre-made attributes for you to use that take care of some of the more common things. I've also built a demo for you to use and play with. How to run the demo is at the bottom of this readme.
