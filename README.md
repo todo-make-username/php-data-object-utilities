@@ -97,11 +97,11 @@ class ReviewFormData
 ...
 
 // This is the data we got from the form:
+// is_public_review was a checkbox. For this example it was unchecked, which doesn't come though.
 $_POST = [
 	'name' => 'Nonya',
 	'review_text' => 'I liked this product.       *cat sitting on spacebar*             ',
 	'star_rating' => '4',
-	// is_public_review was a checkbox. For this example it was unchecked, and therefore didn't come though.
 ];
 
 $_FILES = [
@@ -128,8 +128,8 @@ $FormObject = (new ObjectTailor($FormObject))->tailor()->getObject();
 $ObjectValidator  = new ObjectValidator($FormObject);
 $is_valid         = $ObjectValidator->isValid();
 $response_message = ($is_valid)
-						? 'Success'
-						: implode(PHP_EOL, $ObjectValidator->getMessages());
+		? 'Success'
+		: implode(PHP_EOL, $ObjectValidator->getMessages());
 
 ...
 
