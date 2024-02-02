@@ -10,10 +10,8 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# PHP8 Object Helpers
-This library bridges the gap between associative arrays and modern typed objects.
-
-Includes PHP8 helpers for hydrating and validating objects from arrays using PHP reflection and attributes. This automates many repetitive tasks that we all encounter in modern PHP and keeps the logic in easily reusable components (attributes).
+# PHP8 - Object Helpers
+This library bridges the gap between loosely-typed associative arrays and data objects with typed properties to use in modern type-oriented codebases.
 
 [Report Bug](https://github.com/todo-make-username/php-object-helpers/issues)
 ·
@@ -21,23 +19,22 @@ Includes PHP8 helpers for hydrating and validating objects from arrays using PHP
 
 </div>
 
-## Message from the Author
-This project is fully functional and stable. It is only in the `alpha` state while I add extra attributes and polish the readme. If a feature request is made in Github Issues, not by me, to move it to v1.0.0, I'll finish my current task then move that to v1.0.0 for everyone. Enjoy!
-
 ## Why use this?
-This library is designed to increase reusability and eliminate many of the repetitive tasks that comes from working with data in PHP. This is done by moving much of the data processing and data validation logic into reusable PHP8 attributes. The helpers then take the object and process the attributes on each property which removes a lot of the boilerplate code that is normally needed when processing data.
+If you are always working with associative arrays to pass data around and would like to use properly typed objects instead, this is the library for you.
 
-If you are always working with associative arrays and would like to use properly typed objects instead, this is the library for you.
+## Overview
+This purpose of this library is to increase reusability and eliminate many of the repetitive tasks and potential bugs that come from working with typed data in PHP. One main pain point for anyone working in PHP is processing and validating associative arrays that come from various sources ($_POST, PDO, json_decode, etc). Then we run into the repetitive of having to revalidate that the data we want exists in the array, and it is the correct type, every time we use that data in a new method (I mean, you don't have to, but it is safer that way). This can be nearly eliminated by passing around pre-processed data objects (like a struct in other languages) instead of arrays. This library is how we bridge those two pieces.
 
 **There are 4 main actions this library was designed to help with:**
 1. Hydrate an object's public properties using an associative array of data.
 	* Hydration attributes can act as chainable setter methods that can use the incoming data to assign the object's property something different.
-	* For example, when the attribute `#[JsonDecode(true)]` is used on a property, it will expect a json string during hydration and then parses it, then return an array instead.
-2. While hydrating an object, the values from the array will be automatically converted to the property's type.
+	* For example, when the attribute `#[JsonDecode(true)]` is used on a property, it will expect a json string during hydration and then parses it. Then it uses that array in the next hydration attribute or saves it to the property.
+		* That can then be chained with a custom attribute to take the array data and hydrate a different data object to be saved to the property. With just those 2 attributes you removed a lot of processing from your main flow.
+2. While hydrating an object, the values from the array will be automatically converted to the property's type if it can.
 	* This can be turned off if desired.
 3. Clean up an object's values using altering attributes.
 	* Things like automatically running `trim`, or `str_replace` on a handful of properties only requires you to add the corresponding attribute to the desired properties on the object.
-	* These attributes are called `tailor attributes` in this library.
+	* These attributes are called `tailor attributes` in this library. Because a tailor 'alters' clothing. (I really just couldn't think of a better name in the moment)
 4. Validate an object's properties using validation attributes.
 	* For example, you can set up an attribute that checks if the value of a property matches a regex pattern, or that the value must pass an `!empty` check.
 
@@ -58,6 +55,40 @@ Did I mention that this library is fully extendable? You don't need to use any o
 Yup, that's it. Since this doesn't do anything fancy and mostly relies on built-in PHP features, no need for any external libraries for now.
 
 The dev requirements are just the typical phpunit and code sniffer.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Installation
+**Quick Note:** It is not currently set up as a composer package. If a feature request is made in Github Issues, not by me, to add it as a composer package, I'll look into setting that up.
+
+To install via composer, you need to have it look at this repo directly by modifying your `composer.json`. You'll need to add the repo information in the `repositories` section with your desired version number, or add the section if it doesn't exit. Then add the "package" to your `require` section. Then lastly run `composer update`.
+
+
+composer.json
+```
+"require": {
+    ...,
+    "todomakeusername/php-object-helpers": "^1.0"
+},
+
+...
+
+"repositories": [
+    ...,
+    {
+        "type": "package",
+        "package": {
+            "name": "todomakeusername/php-object-helpers",
+            "version": "1.0.0",
+            "source": {
+                "url": "https://github.com/todo-make-username/php-object-helpers.git",
+                "type": "git",
+                "reference": "main"
+            }
+        }
+    }
+]
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
