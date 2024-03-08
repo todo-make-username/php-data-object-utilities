@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\ObjectHelper;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
+use TodoMakeUsername\DataObjectUtilities\ObjectHelper;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\Trim;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\NotEmpty;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\ValidatorMessage;
 
 /**
  * This uses notEmpty and trim to test since they are simple.

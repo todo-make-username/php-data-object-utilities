@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
+namespace TodoMakeUsername\DataObjectUtilitiesDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\JsonDecode;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\JsonDecode;
 
 class JsonAndArraysObj implements ObjInterface
 {

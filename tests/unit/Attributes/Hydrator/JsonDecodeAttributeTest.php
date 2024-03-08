@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\JsonDecode;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\JsonDecode;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrationException;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
 
 class JsonDecodeAttributeTest extends TestCase
 {

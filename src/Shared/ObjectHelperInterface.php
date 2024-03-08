@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Shared;
+namespace TodoMakeUsername\DataObjectUtilities\Shared;
 
 interface ObjectHelperInterface
 {

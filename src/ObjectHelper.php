@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers;
+namespace TodoMakeUsername\DataObjectUtilities;
 
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Shared\ObjectHelperInterface;
+use TodoMakeUsername\DataObjectUtilities\Tailor\ObjectTailor;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidator;
 
 class ObjectHelper implements ObjectHelperInterface
 {

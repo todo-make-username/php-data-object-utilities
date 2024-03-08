@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
+namespace TodoMakeUsername\DataObjectUtilitiesDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\FileUpload;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\FileUpload;
 
 class UploadsObj implements ObjInterface
 {

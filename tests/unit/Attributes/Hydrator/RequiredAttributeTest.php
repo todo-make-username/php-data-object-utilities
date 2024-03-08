@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\Required;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\Required;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrationException;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
 
 class RequiredAttributeTest extends TestCase
 {

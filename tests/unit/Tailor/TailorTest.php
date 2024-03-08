@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
-use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\Trim;
+use TodoMakeUsername\DataObjectUtilities\Tailor\ObjectTailor;
 
 /**
  * This one uses trim to test since it is simple.

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Validator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Validator;
 
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Shared\ObjectHelperAttributeInterface;
 
 abstract class AbstractValidatorAttribute implements ObjectHelperAttributeInterface
 {

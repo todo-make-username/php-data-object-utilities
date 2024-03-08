@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\RegexMatch;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\RegexMatch;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidator;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidatorException;
 
 class RegexMatchAttributeTest extends TestCase
 {

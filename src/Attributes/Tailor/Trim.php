@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Tailor;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Tailor;
 
 use Attribute;
 

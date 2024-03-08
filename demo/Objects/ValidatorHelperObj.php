@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
+namespace TodoMakeUsername\DataObjectUtilitiesDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\RegexMatch;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\Trim;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\NotEmpty;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\RegexMatch;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\ValidatorMessage;
 
 class ValidatorHelperObj implements ObjInterface
 {

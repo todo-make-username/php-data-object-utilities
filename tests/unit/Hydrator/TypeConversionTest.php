@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Converter\ConversionSettings;
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\HydratorSettings;
-use TodoMakeUsername\ObjectHelpers\Converter\ConversionException;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Converter\ConversionSettings;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\HydratorSettings;
+use TodoMakeUsername\DataObjectUtilities\Converter\ConversionException;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
 
 class TypeConversionTest extends TestCase
 {

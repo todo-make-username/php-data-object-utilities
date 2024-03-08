@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Converter;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Converter;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Shared\ObjectHelperAttributeInterface;
 
 /**
  * This sets the various settings for type conversions.

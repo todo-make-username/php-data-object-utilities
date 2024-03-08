@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Tailor;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Tailor;
 
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Shared\ObjectHelperAttributeInterface;
 
 abstract class AbstractTailorAttribute implements ObjectHelperAttributeInterface
 {

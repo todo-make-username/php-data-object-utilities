@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorFailureException;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\NotEmpty;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\ValidatorMessage;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidatorFailureException;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidator;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidatorException;
 
 /**
  * This one uses notEmpty to test since it is simple.

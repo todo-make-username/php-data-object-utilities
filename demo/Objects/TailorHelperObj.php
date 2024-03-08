@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
+namespace TodoMakeUsername\DataObjectUtilitiesDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\StrReplace;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\UseDefaultOnEmpty;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\StrReplace;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\Trim;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\UseDefaultOnEmpty;
 
 class TailorHelperObj implements ObjInterface
 {

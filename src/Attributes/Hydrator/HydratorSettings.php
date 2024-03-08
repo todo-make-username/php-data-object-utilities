@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Hydrator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Shared\ObjectHelperAttributeInterface;
 
 /**
  * This sets the various settings for hydration.

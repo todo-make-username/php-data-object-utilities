@@ -1,12 +1,12 @@
 {
-    "name": "todo-make-username/object-helpers",
-    "description": "PHP helpers that use extendable attributes for automating many aspects of the repetitive workflow when hydrating and validating PHP objects from associative arrays.",
+    "name": "todo-make-username/data-object-utilities",
+    "description": "PHP utilities and helpers that use extendable attributes for automating many aspects of the repetitive workflow when hydrating and validating PHP objects from associative arrays.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "TodoMakeUsername\\ObjectHelpers\\": "src/",
-            "TodoMakeUsername\\ObjectHelpersDemo\\": "demo/"
+            "TodoMakeUsername\\DataObjectUtilities\\": "src/",
+            "TodoMakeUsername\\DataObjectUtilitiesDemo\\": "demo/"
         }
     },
     "authors": [

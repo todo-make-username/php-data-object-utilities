@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\Trim;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\UseDefaultOnEmpty;
-use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
-use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailoringException;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\Trim;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\UseDefaultOnEmpty;
+use TodoMakeUsername\DataObjectUtilities\Tailor\ObjectTailor;
+use TodoMakeUsername\DataObjectUtilities\Tailor\ObjectTailoringException;
 
 class UseDefaultOnEmptyAttributeTest extends TestCase
 {

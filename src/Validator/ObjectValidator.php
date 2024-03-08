@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Validator;
+namespace TodoMakeUsername\DataObjectUtilities\Validator;
 
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\AbstractValidatorAttribute;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\ValidatorMessage;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Shared\ObjectHelperInterface;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\AbstractValidatorAttribute;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\ValidatorMessage;
 
 /**
  * This class uses attributes to validate properties. No values are altered.

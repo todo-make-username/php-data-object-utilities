@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Validator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Validator;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidatorException;
 
 /**
  * This contains the validation message when a property fails validation with the specific validation attribute.

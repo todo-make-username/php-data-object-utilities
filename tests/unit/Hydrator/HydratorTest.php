@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\HydratorSettings;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\HydratorSettings;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
 
 class HydratorTest extends TestCase
 {

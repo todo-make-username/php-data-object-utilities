@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Validator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Validator;
 
 use Attribute;
 

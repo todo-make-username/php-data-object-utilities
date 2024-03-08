@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Util;
+namespace TodoMakeUsername\DataObjectUtilities\Util;
 
 class FilesHelper
 {

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
+namespace TodoMakeUsername\DataObjectUtilitiesDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Attributes\Converter\ConversionSettings;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Converter\ConversionSettings;
 
 class BasicFormHandlingObj implements ObjInterface
 {

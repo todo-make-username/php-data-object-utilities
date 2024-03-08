@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Tailor;
+namespace TodoMakeUsername\DataObjectUtilities\Tailor;
 
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
-use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrator;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\AbstractTailorAttribute;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\DataObjectUtilities\Shared\ObjectHelperInterface;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrator;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\AbstractTailorAttribute;
 
 /**
  * This class uses property attributes to alter (tailor) the data stored in public properties.

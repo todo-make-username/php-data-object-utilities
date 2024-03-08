@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Tailor\StrReplace;
-use TodoMakeUsername\ObjectHelpers\Tailor\ObjectTailor;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Tailor\StrReplace;
+use TodoMakeUsername\DataObjectUtilities\Tailor\ObjectTailor;
 
 class StrReplaceAttributeTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Shared;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Shared;
 
 /**
  * The base interface for all attributes used in this project.

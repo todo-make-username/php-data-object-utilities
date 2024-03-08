@@ -10,12 +10,12 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# PHP8 - Object Helpers
+# PHP8 - Data Object Utilities
 This library bridges the gap between loosely-typed associative arrays and data objects with typed properties to use in modern type-oriented codebases.
 
-[Report Bug](https://github.com/todo-make-username/php-object-helpers/issues)
+[Report Bug](https://github.com/todo-make-username/php-data-object-utilities/issues)
 ·
-[Request Feature](https://github.com/todo-make-username/php-object-helpers/issues)
+[Request Feature](https://github.com/todo-make-username/php-data-object-utilities/issues)
 
 </div>
 
@@ -68,25 +68,18 @@ composer.json
 ```
 "require": {
     ...,
-    "todomakeusername/php-object-helpers": "^1.0"
+    "todomakeusername/php-data-object-utilities": "*"
 },
 
 ...
 
 "repositories": [
-    ...,
-    {
-        "type": "package",
-        "package": {
-            "name": "todomakeusername/php-object-helpers",
-            "version": "1.0.0",
-            "source": {
-                "url": "https://github.com/todo-make-username/php-object-helpers.git",
-                "type": "git",
-                "reference": "main"
-            }
-        }
-    }
+    {...},
+	{
+		"url": "https://github.com/todo-make-username/php-data-object-utilities.git",
+		"type": "git",
+	},
+    {...},
 ]
 ```
 
@@ -329,7 +322,7 @@ $NewObj       = $ObjectHelper->getObject();
 
 
 ## How to run the demo
-Make a copy of this project via cli or by downloading. Then run this command in the project root to spin up a dev PHP server for the demo:
+Make a copy of this project via cli or by downloading. Run `composer install` in the project root, then run the following command (also in the project root) to spin up a dev PHP server for the demo:
 ```shell
 php -S localhost:8000 demo/index.php
 ```
@@ -371,13 +364,13 @@ _<h5>Spaces already have a use, tab indentation is better. #teamtabs</h5>_
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/todo-make-username/php-object-helpers.svg
-[contributors-url]: https://github.com/todo-make-username/php-object-helpers/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/todo-make-username/php-object-helpers.svg
-[stars-url]: https://github.com/todo-make-username/php-object-helpers/stargazers
-[issues-shield]: https://img.shields.io/github/issues/todo-make-username/php-object-helpers.svg
-[issues-url]: https://github.com/todo-make-username/php-object-helpers/issues
-[license-shield]: https://img.shields.io/github/license/todo-make-username/php-object-helpers.svg
-[license-url]: https://github.com/todo-make-username/php-object-helpers/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/todo-make-username/php-data-object-utilities.svg
+[contributors-url]: https://github.com/todo-make-username/php-data-object-utilities/graphs/contributors
+[stars-shield]: https://img.shields.io/github/stars/todo-make-username/php-data-object-utilities.svg
+[stars-url]: https://github.com/todo-make-username/php-data-object-utilities/stargazers
+[issues-shield]: https://img.shields.io/github/issues/todo-make-username/php-data-object-utilities.svg
+[issues-url]: https://github.com/todo-make-username/php-data-object-utilities/issues
+[license-shield]: https://img.shields.io/github/license/todo-make-username/php-data-object-utilities.svg
+[license-url]: https://github.com/todo-make-username/php-data-object-utilities/blob/main/LICENSE
 [php-shield]: https://img.shields.io/badge/php->%3D8.2-blue
 [php-url]: https://www.php.net/

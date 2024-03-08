@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Hydrator;
+namespace TodoMakeUsername\DataObjectUtilities\Hydrator;
 
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
-use TodoMakeUsername\ObjectHelpers\Converter\TypeConverter;
-use TodoMakeUsername\ObjectHelpers\Shared\ObjectHelperInterface;
-use TodoMakeUsername\ObjectHelpers\Attributes\Converter\ConversionSettings;
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\AbstractHydratorAttribute;
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\HydratorSettings;
-use TodoMakeUsername\ObjectHelpers\Attributes\Shared\ObjectHelperAttributeInterface;
+use TodoMakeUsername\DataObjectUtilities\Converter\TypeConverter;
+use TodoMakeUsername\DataObjectUtilities\Shared\ObjectHelperInterface;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Converter\ConversionSettings;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\AbstractHydratorAttribute;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\HydratorSettings;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Shared\ObjectHelperAttributeInterface;
 
 class ObjectHydrator implements ObjectHelperInterface
 {

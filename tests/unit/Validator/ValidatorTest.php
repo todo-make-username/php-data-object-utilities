@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Attributes\Validator\NotEmpty;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidator;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Validator\NotEmpty;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidator;
 
 /**
  * This one uses notEmpty to test since it is simple.

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Hydrator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrationException;
 
 /**
  * The hydration data array must have this property name set as a key.

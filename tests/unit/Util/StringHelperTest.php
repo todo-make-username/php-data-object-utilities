@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
+use TodoMakeUsername\DataObjectUtilities\Util\StringHelper;
 
 class StringHelperTest extends TestCase
 {

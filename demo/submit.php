@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
-use TodoMakeUsername\ObjectHelpers\ObjectHelper;
-use TodoMakeUsername\ObjectHelpersDemo\Util\ObjectFactory;
+use TodoMakeUsername\DataObjectUtilities\ObjectHelper;
+use TodoMakeUsername\DataObjectUtilitiesDemo\Util\ObjectFactory;
 
 $Obj            = ObjectFactory::create($_POST['section']);
 $NewObj         = null;

@@ -52,7 +52,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Object Helpers Demo</title>
+	<title>Data Object Utilities Demo</title>
 
 	<!-- JQuery -->
 	<script 
@@ -233,7 +233,7 @@
 	<div class="pure-g text-center">
 		<div class="pure-u-1">
 			<h1>
-				Object Helpers Demo<br>
+				Data Object Utilities/Helpers Demo<br>
 				<small>Attributes</small>
 			</h1>
 		</div>

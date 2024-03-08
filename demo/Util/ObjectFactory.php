@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpersDemo\Util;
+namespace TodoMakeUsername\DataObjectUtilitiesDemo\Util;
 
 class ObjectFactory
 {
@@ -14,7 +14,7 @@ class ObjectFactory
 	{
 		$section    = ucwords($section, ' _');
 		$section    = str_replace('_', '', $section);
-		$class_name = 'TodoMakeUsername\\ObjectHelpersDemo\\Objects\\'.$section.'Obj';
+		$class_name = 'TodoMakeUsername\\DataObjectUtilitiesDemo\\Objects\\'.$section.'Obj';
 		if (class_exists($class_name))
 		{
 			return new $class_name();

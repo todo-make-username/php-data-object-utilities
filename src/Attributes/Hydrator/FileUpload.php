@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Hydrator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Util\FilesHelper;
+use TodoMakeUsername\DataObjectUtilities\Util\FilesHelper;
 
 /**
  * This takes the file array from the $_FILES array that matches the property name.

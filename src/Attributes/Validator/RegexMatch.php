@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Validator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Validator;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
-use TodoMakeUsername\ObjectHelpers\Validator\ObjectValidatorException;
+use TodoMakeUsername\DataObjectUtilities\Util\StringHelper;
+use TodoMakeUsername\DataObjectUtilities\Validator\ObjectValidatorException;
 
 /**
  * The value in the attribute must not be empty.

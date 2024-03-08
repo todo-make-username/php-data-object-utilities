@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Converter;
+namespace TodoMakeUsername\DataObjectUtilities\Converter;
 
-use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
+use TodoMakeUsername\DataObjectUtilities\Util\StringHelper;
 
 class TypeConverter
 {

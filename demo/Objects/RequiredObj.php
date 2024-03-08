@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpersDemo\Objects;
+namespace TodoMakeUsername\DataObjectUtilitiesDemo\Objects;
 
-use TodoMakeUsername\ObjectHelpers\Attributes\Hydrator\Required;
+use TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator\Required;
 
 class RequiredObj implements ObjInterface
 {

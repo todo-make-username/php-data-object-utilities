@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace TodoMakeUsername\ObjectHelpers\Attributes\Hydrator;
+namespace TodoMakeUsername\DataObjectUtilities\Attributes\Hydrator;
 
 use Attribute;
-use TodoMakeUsername\ObjectHelpers\Hydrator\ObjectHydrationException;
-use TodoMakeUsername\ObjectHelpers\Util\StringHelper;
+use TodoMakeUsername\DataObjectUtilities\Hydrator\ObjectHydrationException;
+use TodoMakeUsername\DataObjectUtilities\Util\StringHelper;
 
 /**
  * When a valid json string is passed in, turn it into an array.
